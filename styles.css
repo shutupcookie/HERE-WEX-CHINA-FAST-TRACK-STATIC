@@ -622,34 +622,34 @@ body {
     padding: 0 10px;
   }
 }
-/* Global Footer - Text Logo QR Code */
+
 .global-footer {
   background: #173142;
-  padding: 48px 0 36px 0;
+  padding: 56px 0 40px 0;
   width: 100vw;
   font-family: 'FiraGO-Regular', Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-.footer-container {
-  max-width: 1200px;
+.footer-main {
   width: 100%;
-  margin: 0 auto;
-  padding: 0 28px;
+  max-width: 1200px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 48px;
+  margin-bottom: 30px;
+  min-height: 130px;
 }
 
 .footer-brand {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex: 1;
 }
 
 .heading-2 {
@@ -666,30 +666,31 @@ body {
   color: #fff;
 }
 
-.footer-qr {
+.footer-qr-wrap {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 24px;
+  flex: 0 0 auto;
 }
 
 .footer-qr-img {
-  width: 92px;
-  height: 92px;
-  border-radius: 12px;
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
   box-shadow: 0 2px 12px 0 rgba(20,43,63,0.15);
   background: #fff;
   object-fit: cover;
-  margin-bottom: 7px;
 }
 
 .footer-qr-caption {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #b8c9d8;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.01em;
-  margin-bottom: 0;
-  text-align: center;
+  margin: 0;
+  align-self: center;
+  text-align: left;
 }
 
 .footer-meta-centered {
@@ -699,28 +700,50 @@ body {
   color: #fff;
   font-weight: 400;
   letter-spacing: 0.01em;
-  margin-top: 28px;
+  margin-top: 18px;
+  margin-bottom: 0;
 }
 
-@media (max-width: 700px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 22px;
-    padding: 0 10px;
+@media (max-width: 900px) {
+  .footer-main {
+    gap: 24px;
+    min-height: 100px;
+  }
+  .footer-qr-img {
+    width: 90px;
+    height: 90px;
   }
   .heading-2 {
     font-size: 2rem;
   }
-  .footer-qr-img {
-    width: 84px;
-    height: 84px;
-  }
   .footer-qr-caption {
-    font-size: 0.98rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    min-height: 0;
+    padding: 0 10px;
+  }
+  .footer-brand {
+    margin-bottom: 4px;
+  }
+  .footer-qr-wrap {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+  .footer-qr-img {
+    width: 72px;
+    height: 72px;
   }
   .footer-meta-centered {
     font-size: 0.93rem;
-    margin-top: 18px;
+    margin-top: 16px;
   }
 }
