@@ -17,7 +17,7 @@ body {
   font-weight: 700;
 }
 
-/* Navigation Styles */
+/* --- Updated Global Navigation --- */
 .navbar {
   position: sticky;
   top: 0;
@@ -25,26 +25,27 @@ body {
   background: #fff;
   box-shadow: 0 1px 0 #e5e7eb;
   z-index: 100;
+  min-height: 60px;
 }
 .navbar-container {
   max-width: 1600px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  height: 88px;
-  padding: 0 3vw;
+  height: 60px;
+  padding: 0 2vw;
   justify-content: space-between;
 }
 .navbar-logo {
-  height: 48px;
-  width: 48px;
-  margin-right: 32px;
+  height: 40px;
+  width: 40px;
+  margin-right: 34px;
   vertical-align: middle;
   display: flex;
   align-items: center;
 }
 .navbar-logo img {
-  height: 48px;
+  height: 40px;
   width: auto;
   display: block;
 }
@@ -55,20 +56,20 @@ body {
 }
 .navbar-links {
   display: flex;
-  gap: 48px;
+  gap: 34px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .navbar-link {
   font-family: 'FiraGO', Arial, sans-serif;
-  font-size: 1.45rem;
-  font-weight: 700;
-  color: #002736e8;
+  font-size: 1.09rem;
+  font-weight: 600;
+  color: #1a2e3b;
   text-decoration: none;
-  padding: 8px 0;
+  padding: 6px 0;
   letter-spacing: 0.01em;
-  transition: color 0.2s;
+  transition: color 0.18s;
 }
 .navbar-link:hover,
 .navbar-link:focus {
@@ -77,24 +78,22 @@ body {
 .navbar-actions {
   display: flex;
   align-items: center;
-  margin-left: 32px;
+  margin-left: 28px;
 }
-
-/* CTA Button */
 .btn-cta {
-  background: linear-gradient(90deg, #6df3f8 0%, #96f7d2 100%);
-  color: #002736;
+  background: linear-gradient(90deg, #7ff6f3 0%, #c1fae3 100%);
+  color: #1a2e3b;
   font-family: 'FiraGO', Arial, sans-serif;
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-weight: 600;
+  font-size: 1.05rem;
   border: none;
-  border-radius: 999px;
-  padding: 22px 60px;
+  border-radius: 32px;
+  padding: 12px 46px;
   cursor: pointer;
   box-shadow: none;
   text-align: center;
   text-decoration: none;
-  margin-left: 32px;
+  margin-left: 16px;
   transition: background 0.2s, color 0.2s;
   display: inline-block;
 }
@@ -102,6 +101,27 @@ body {
 .btn-cta:focus {
   background: linear-gradient(90deg, #81f4f7 0%, #b7fadf 100%);
   color: #002736;
+}
+
+/* Responsive navbar */
+@media (max-width: 900px) {
+  .navbar-container {
+    flex-direction: column;
+    height: auto;
+    padding: 0 1rem;
+    gap: 6px;
+  }
+  .navbar-logo {
+    margin-right: 0;
+  }
+  .navbar-links {
+    gap: 22px;
+  }
+  .btn-cta {
+    padding: 10px 30px;
+    font-size: 0.95rem;
+    min-width: 120px;
+  }
 }
 
 /* Hero Section Styles */
@@ -246,25 +266,8 @@ body {
   border-top: 1px solid #e5e7eb;
 }
 
-/* Responsive */
+/* Responsive for hero, feature, and CTA */
 @media (max-width: 900px) {
-  .navbar-container {
-    flex-direction: column;
-    height: auto;
-    padding: 0 1rem;
-    gap: 6px;
-  }
-  .navbar-logo {
-    margin-right: 0;
-  }
-  .navbar-links {
-    gap: 28px;
-  }
-  .btn-cta, .hero-buttons .btn-cta, .cta-section .btn-cta {
-    padding: 14px 32px;
-    font-size: 1rem;
-    min-width: 120px;
-  }
   .hero-section,
   .hero-image,
   .hero-overlay,
@@ -284,7 +287,8 @@ body {
     padding: 2rem 1rem;
   }
 }
-/* Digital Cockpit Hero Section (Add at end of file) */
+
+/* Digital Cockpit Hero Section */
 .dc-hero {
   position: relative;
   min-height: 480px;
@@ -335,7 +339,7 @@ body {
 .hero-cta.btn.btn-primary:hover {
   background: linear-gradient(90deg, #3575ec 0%, #36e6ef 100%);
 }
-/* Digital Cockpit Stats Bar - improved for reference screenshot */
+/* Digital Cockpit Stats Bar */
 .dc-stats-bar {
   background: #173142;
   padding: 56px 0 56px 0;
