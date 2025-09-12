@@ -31,20 +31,43 @@
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero-section">
-  <img src="src/hero.jpg" alt="" class="hero-image" />
-  <div class="hero-overlay"></div>
-  <div class="container hero-content">
-    <h1 class="hero-title">
-      The unified map for automakers<br/>and enterprises
-    </h1>
-    <div class="hero-buttons">
-      <a href="#" class="btn btn-secondary" id="contactHeroBtn">Contact sales</a>
-      <a href="#" class="btn btn-primary">See our pricing</a>
+  <!-- Hero: Primary Fullbleed -->
+  <section class="wex-hero wex-hero--fullbleed" aria-labelledby="home-hero-title">
+    <div class="wex-hero__media" aria-hidden="true">
+      <img
+        src="src/images/home-hero-fullbleed.jpg"
+        alt=""
+        class="wex-hero__img"
+        width="1920"
+        height="768"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="wex-hero__scrim"></div>
     </div>
-  </div>
-</section>
+
+    <div class="wex-hero__content">
+      <h1 id="home-hero-title" class="wex-hero__title">
+        The unified map for automakers and enterprises
+      </h1>
+
+      <div class="wex-hero__ctas">
+        <a class="wex-btn wex-btn--primary" href="digital-cockpit.html">
+          Discover HERE Digital Cockpit
+        </a>
+
+        <button
+          class="wex-btn wex-btn--secondary"
+          type="button"
+          id="contact-sales-btn"
+          aria-haspopup="dialog"
+          aria-controls="mkto-modal"
+        >
+          Contact Sales
+        </button>
+      </div>
+    </div>
+  </section>
 
 <!-- FEATURE -->
 <section class="feature-section">
