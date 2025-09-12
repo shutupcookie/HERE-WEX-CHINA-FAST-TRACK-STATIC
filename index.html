@@ -69,6 +69,34 @@
     </div>
   </section>
 
+    <!-- Marketo Modal (lazy-loaded on first open) -->
+  <div
+    class="wex-modal"
+    id="mkto-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="mkto-modal-title"
+    aria-hidden="true"
+    data-mkto-instance="https://app-ab31.marketo.com"
+    data-mkto-account="XXX-XXX-XXX"       <!-- TODO: replace with your Marketo account ID -->
+    data-mkto-form="1234"                 <!-- TODO: replace with your Marketo Form ID -->
+  >
+    <div class="wex-modal__backdrop" data-close-modal></div>
+
+    <div class="wex-modal__dialog" role="document">
+      <button class="wex-modal__close" type="button" title="Close" aria-label="Close" data-close-modal>
+        ×
+      </button>
+      <h2 id="mkto-modal-title" class="wex-modal__title">Contact Sales</h2>
+      <div id="mkto-form-container" class="wex-modal__body">
+        <!-- Marketo form will be injected here -->
+        <div class="wex-modal__loading" id="mkto-loading" aria-live="polite">Loading form…</div>
+        <noscript>Please enable JavaScript to load the contact form.</noscript>
+      </div>
+    </div>
+  </div>
+
+
 <!-- FEATURE -->
 <section class="feature-section">
   <img src="src/feature.jpg" alt="" class="feature-image">
