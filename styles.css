@@ -622,3 +622,127 @@ body {
     padding: 0 10px;
   }
 }
+.global-footer {
+  background: #173142;
+  padding: 56px 0 40px 0;
+  width: 100vw;
+  font-family: 'FiraGO-Regular', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-main {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 48px;
+  margin-bottom: 30px;
+  min-height: 130px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.heading-2 {
+  font-family: 'FiraGO-Bold', Arial, sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: #fff;
+  margin: 0;
+}
+
+.text-ondarkcolor-primary {
+  color: #fff;
+}
+
+.footer-qr-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex: 0 0 auto;
+}
+
+.footer-qr-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px 0 rgba(20,43,63,0.15);
+  background: #fff;
+  object-fit: cover;
+}
+
+.footer-qr-caption {
+  font-size: 1.2rem;
+  color: #b8c9d8;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0;
+  align-self: center;
+  text-align: left;
+}
+
+.footer-meta-centered {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .footer-main {
+    gap: 24px;
+    min-height: 100px;
+  }
+  .footer-qr-img {
+    width: 90px;
+    height: 90px;
+  }
+  .heading-2 {
+    font-size: 2rem;
+  }
+  .footer-qr-caption {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    min-height: 0;
+    padding: 0 10px;
+  }
+  .footer-brand {
+    margin-bottom: 4px;
+  }
+  .footer-qr-wrap {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+  .footer-qr-img {
+    width: 72px;
+    height: 72px;
+  }
+  .footer-meta-centered {
+    font-size: 0.93rem;
+    margin-top: 16px;
+  }
+}
