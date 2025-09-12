@@ -149,7 +149,7 @@ body {
   position: absolute;
   inset: 0;
   display: grid;
-  align-content: center;       /* vertical centering */
+  align-content: left;       /* vertical centering */
   justify-items: center;       /* horizontal centering */
   gap: 1.5rem;
   padding-inline: var(--page-pad);
