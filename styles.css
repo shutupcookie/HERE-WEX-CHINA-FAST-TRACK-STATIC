@@ -746,3 +746,32 @@ body {
     margin-top: 16px;
   }
 }
+#marketo-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  justify-content: center; align-items: center;
+}
+#marketo-modal .modal-overlay {
+  position: absolute; left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.55);
+}
+#marketo-modal .modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 24px;
+  max-width: 420px;
+  width: 95vw;
+  z-index: 2;
+  box-shadow: 0 6px 32px rgba(23,49,66,0.15);
+}
+#marketo-modal .modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  background: none; border: none;
+  font-size: 2rem; color: #173142;
+  cursor: pointer;
+}
