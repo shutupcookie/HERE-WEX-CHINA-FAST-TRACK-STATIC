@@ -149,14 +149,19 @@ body {
   position: absolute;
   inset: 0;
   display: grid;
-  align-content: left;       /* vertical centering */
+  align-content: left;       
   justify-items: center;       /* horizontal centering */
   gap: 1.5rem;
   padding-inline: var(--page-pad);
   z-index: 2;
   text-align: center;
 }
-
+.hero-section .hero-content {
+  display: flex;                /* already present */
+  align-items: flex-start;      /* left-align content horizontally */
+  justify-content: center;      /* vertical centering if column */
+  text-align: left;             /* left-align text */
+}
 /* Optional: Left-aligned variant when you add .hero-content--left */
 .hero-content.hero-content--left {
   justify-items: start;
@@ -211,6 +216,7 @@ body {
 @media (max-width: 768px){
   .hero-buttons { gap: 0.9rem; }
 }
+
 /* Feature Section Styles */
 .feature-section {
   width: 100vw;
