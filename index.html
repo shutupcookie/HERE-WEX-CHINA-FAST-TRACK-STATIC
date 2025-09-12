@@ -1,68 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>HERE WEX China Static Homepage</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preload" href="src/FiraGO-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="src/FiraGO-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="src/FiraGO-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <!-- NAVBAR -->
-<header class="navbar">
-  <div class="navbar-container">
+<header class="navbar" role="banner">
+  <div class="container navbar-container">
     <a href="index.html" class="navbar-logo" aria-label="HERE Home">
       <img src="src/logo.svg" alt="HERE Logo" />
     </a>
-    <nav class="navbar-menu" aria-label="Main Navigation">
+
+    <nav class="navbar-menu" aria-label="Main navigation">
       <ul class="navbar-links">
-        <li><a href="index.html" class="navbar-link">Home</a></li>
+        <li><a href="index.html" class="navbar-link is-active">Home</a></li>
         <li><a href="digital-cockpit.html" class="navbar-link">Digital Cockpit</a></li>
         <li><a href="blog.html" class="navbar-link">Lotus Emeya + HERE</a></li>
       </ul>
     </nav>
+
     <div class="navbar-actions">
-      <a href="#" class="btn btn-cta navbar-btn" id="contactCtaBtn">Contact us</a>
+      <a href="#" class="btn btn-secondary" id="contactCtaBtn">Contact us</a>
     </div>
   </div>
 </header>
 
- <!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero-section">
-  <img src="src/hero.jpg" alt="HERE platform hero" class="hero-image">
+  <img src="src/hero.jpg" alt="" class="hero-image" />
   <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1 class="hero-title">The unified map for automakers and enterprises</h1>
+  <div class="container hero-content">
+    <h1 class="hero-title">
+      The unified map for automakers<br/>and enterprises
+    </h1>
     <div class="hero-buttons">
-      <a href="digital-cockpit.html" class="btn btn-cta hero-btn">Discover HERE Digital Cockpit</a>
-      <a href="#" class="btn btn-cta hero-btn" id="contactHeroBtn">Contact sales</a>
+      <a href="#" class="btn btn-secondary" id="contactHeroBtn">Contact sales</a>
+      <a href="#" class="btn btn-primary">See our pricing</a>
     </div>
   </div>
 </section>
-  
-  <!-- FEATURE SECTION -->
-  <section class="feature-section">
-    <img src="src/feature.jpg" alt="Map feature illustration" class="feature-image">
-    <div class="feature-content">
-      <h2 class="text-headline font-bold mb-6">One map, many solutions</h2>
-      <p class="text-body opacity-80">
-        HERE’s unified live map delivers automotive-grade location data to businesses across industries and use cases.
-      </p>
-    </div>
-  </section>
-  
-  <!-- Global Contact Us Section -->
 
+<!-- FEATURE -->
+<section class="feature-section">
+  <img src="src/feature.jpg" alt="" class="feature-image">
+  <div class="feature-content">
+    <h2>One map, many solutions</h2>
+    <p>HERE’s unified live map delivers automotive-grade location data to businesses across industries and use cases.</p>
+  </div>
+</section>
+
+<!-- Global Contact Us -->
 <section class="contact-global-section">
   <div class="contact-global-content">
     <h2 class="contact-global-title">联系我们</h2>
     <p class="contact-global-subheading">一起探讨如何将位置智能融入您的解决方案。</p>
     <button id="contact-btn" class="contact-global-btn">联系我们</button>
   </div>
-</section> 
+</section>
 
-  <!-- Global Footer -->
+<!-- FOOTER -->
 <footer class="global-footer">
-  <div class="footer-main">
+  <div class="footer-main container">
     <div class="footer-brand">
       <p class="heading-2 text-ondarkcolor-primary">HERE</p>
     </div>
@@ -71,5 +75,21 @@
       <span class="footer-qr-caption">Scan QR Code</span>
     </div>
   </div>
-
 </footer>
+
+<!-- Marketo Modal (reusable on all pages) -->
+<div id="contact-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="contactModalTitle" aria-modal="true">
+  <div class="modal-backdrop" data-close-modal></div>
+  <div class="modal-dialog" role="document">
+    <button class="modal-close" id="close-modal" aria-label="Close modal">×</button>
+    <h2 id="contactModalTitle" class="modal-title">Contact us</h2>
+    <div id="mktoFormContainer">
+      <!-- Marketo form will load here -->
+      <div class="modal-loading">Loading form…</div>
+    </div>
+  </div>
+</div>
+
+<script src="main.js" defer></script>
+</body>
+</html>
