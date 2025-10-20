@@ -1,158 +1,224 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <title>数字座舱 | HERE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Global Navigation Header -->
-  <!--#include file="src/navigation.html" -->
+  <head>
+    <meta charset="UTF-8" />
+    <title>数字座舱 | HERE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Global Navigation Header -->
+    <!--#include file="src/navigation.html" -->
 
-  <!-- Global Navigation Header -->
-<header class="navbar">
-  <div class="navbar-container">
-    <a href="index.html" class="navbar-logo" aria-label="HERE Home">
-      <img src="src/logo.svg" alt="HERE Logo" />
-    </a>
-    <nav class="navbar-menu" aria-label="Main Navigation">
-      <ul class="navbar-links">
-        <li><a href="index.html" class="navbar-link">Home</a></li>
-        <li><a href="digital-cockpit.html" class="navbar-link">Digital Cockpit</a></li>
-        <li><a href="blog.html" class="navbar-link">Lotus Emeya + HERE</a></li>
-      </ul>
-    </nav>
-    <div class="navbar-actions">
-      <a href="#" class="btn btn-cta" id="contactCtaBtn">Contact us</a>
-    </div>
-  </div>
-</header>
-
-  <!-- Hero Section -->
-  <section class="hero-section dc-hero" style="background-image: url('src/digital-cockpit-hero.jpg');">
-    <div class="hero-overlay">
-      <div class="container hero-content">
-        <h1 class="hero-title">部署数字导航体验</h1>
-        <p class="hero-subtitle">为数字座舱打造更安全、高效、便捷的互联导航体验。</p>
-        <a href="#" class="btn btn-primary hero-cta" id="contact-btn">联系我们</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Section -->
-  <section class="dc-stats-bar">
-    <div class="dc-stats-bar-content">
-      <div class="dc-stat-item">
-        <div class="dc-stat-number">222m+</div>
-        <div class="dc-stat-caption">vehicles shipped with HERE data and services on board</div>
-      </div>
-      <div class="dc-stat-item">
-        <div class="dc-stat-number">70+</div>
-        <div class="dc-stat-caption">leading OEM brands rely on HERE for location-based solutions</div>
-      </div>
-      <div class="dc-stat-item">
-        <div class="dc-stat-number">44m+</div>
-        <div class="dc-stat-caption">vehicles connected to HERE Platform in real-time</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Card List Section -->
-  <section class="dc-card-list">
-    <div class="container dc-card-list-inner">
-      <h2 class="dc-card-list-title">探索面向软件定义车辆的互联导航方案</h2>
-      <div class="dc-card-list-row">
-        <div class="dc-card">
-          <div class="dc-card-icon">
-            <img src="src/stats-icon-1.svg" alt="获得完整的数字座舱解决方案组合" width="64" height="64">
-          </div>
-          <div class="dc-card-title">获取完整的数字座舱解决方案组合</div>
-          <div class="dc-card-desc">集成从位置服务API/SDK到完整导航软件的创新方案，满足个性化需求。</div>
-        </div>
-        <div class="dc-card">
-          <div class="dc-card-icon">
-            <img src="src/stats-icon-2.svg" alt="采用定制化组件构建系统" width="64" height="64">
-          </div>
-          <div class="dc-card-title">采用定制化组件构建系统</div>
-          <div class="dc-card-desc">通过 OTA 更新导航功能，实现车辆全生命周期内持续升级。</div>
-        </div>
-        <div class="dc-card">
-          <div class="dc-card-icon">
-            <img src="src/stats-icon-3.svg" alt="灵活的 SaaS 模式" width="64" height="64">
-          </div>
-          <div class="dc-card-title">灵活的 SaaS 模式</div>
-          <div class="dc-card-desc">通过 SaaS 模式交付的互联导航软件，实现极致的定价和生命周期灵活性。</div>
+    <!-- Global Navigation Header -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-logo" aria-label="HERE Home">
+          <img src="src/logo.svg" alt="HERE Logo" />
+        </a>
+        <nav class="navbar-menu" aria-label="Main Navigation">
+          <ul class="navbar-links">
+            <li><a href="index.html" class="navbar-link">主页</a></li>
+            <li
+              ><a href="digital-cockpit.html" class="navbar-link"
+                >数字座舱</a
+              ></li
+            >
+            <li
+              ><a href="blog.html" class="navbar-link"
+                >Lotus Emeya + HERE</a
+              ></li
+            >
+          </ul>
+        </nav>
+        <div class="navbar-actions">
+          <a href="#" class="btn btn-cta" id="contactCtaBtn">联系我们</a>
         </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Flex Card Section: image left, text right, alternating -->
-  <section class="dc-flex-cards">
-    <div class="container dc-flex-cards-inner">
-      <h2 class="dc-flex-cards-title">探索真正互联的导航</h2>
-      <div class="dc-flex-card-list">
-        <div class="dc-flex-card dc-flex-card-row">
-          <div class="dc-flex-card-img"><img src="src/flex-card-1.jpg" alt="专为软件定义汽车打造的产品组合"></div>
-          <div class="dc-flex-card-text">
-            <div class="dc-flex-card-title">专为软件定义汽车打造的产品组合</div>
-            <div class="dc-flex-card-desc">部署完整软件或采用支持流式地图更新与持续OTA功能交付的软赋能方案。</div>
-          </div>
+    <!-- Hero Section -->
+    <section
+      class="hero-section dc-hero"
+      style="background-image: url('src/digital-cockpit-hero.jpg')"
+    >
+      <div class="hero-overlay">
+        <div class="container hero-content">
+          <h1 class="hero-title">部署数字导航体验</h1>
+          <p class="hero-subtitle"
+            >为数字座舱打造更安全、高效、便捷的互联导航体验。</p
+          >
+          <a href="#" class="btn btn-primary hero-cta" id="contact-btn"
+            >联系我们</a
+          >
         </div>
-        <div class="dc-flex-card dc-flex-card-row dc-flex-card-row-reverse">
-          <div class="dc-flex-card-img"><img src="src/flex-card-2.jpg" alt="电动汽车专属方案"></div>
-          <div class="dc-flex-card-text">
-            <div class="dc-flex-card-title">电动汽车专属方案</div>
-            <div class="dc-flex-card-desc">集成电动汽车功能，消除里程焦虑。接入全球充电桩数据库，具备丰富属性数据、独家机器学习能力、持续反馈机制及定制化充电感知路径规划。</div>
-          </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="dc-stats-bar">
+      <div class="dc-stats-bar-content">
+        <div class="dc-stat-item">
+          <div class="dc-stat-number">2.2亿+</div>
+          <div class="dc-stat-caption">车辆搭载了HERE的数据与服务</div>
         </div>
-        <div class="dc-flex-card dc-flex-card-row">
-          <div class="dc-flex-card-img"><img src="src/flex-card-3.jpg" alt="支持配套应用与手机镜像"></div>
-          <div class="dc-flex-card-text">
-            <div class="dc-flex-card-title">支持配套应用与手机镜像</div>
-            <div class="dc-flex-card-desc">通过品牌专属配套应用完善用户体验，基于HERE位置服务实现车机到移动端的无缝切换。</div>
-          </div>
+        <div class="dc-stat-item">
+          <div class="dc-stat-number">70+</div>
+          <div class="dc-stat-caption"
+            >OEM 品牌使用 HERE 基于位置的解决方案</div
+          >
         </div>
-        <div class="dc-flex-card dc-flex-card-row dc-flex-card-row-reverse">
-          <div class="dc-flex-card-img"><img src="src/flex-card-4.jpg" alt="商用车辆解决方案"></div>
-          <div class="dc-flex-card-text">
-            <div class="dc-flex-card-title">商用车辆解决方案</div>
-            <div class="dc-flex-card-desc">通过使用专为卡车设计的地图内容和服务来优化商用车辆驾驶，为专业驾驶员提供所需的工具，使他们能够更快、更安全、更合规地完成工作。</div>
+        <div class="dc-stat-item">
+          <div class="dc-stat-number">4400万+</div>
+          <div class="dc-stat-caption">车辆与 HERE Platform 平台实时连接</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Card List Section -->
+    <section class="dc-card-list">
+      <div class="container dc-card-list-inner">
+        <h2 class="dc-card-list-title">探索面向软件定义车辆的互联导航方案</h2>
+        <div class="dc-card-list-row">
+          <div class="dc-card">
+            <div class="dc-card-icon">
+              <img
+                src="src/stats-icon-1.svg"
+                alt="获得完整的数字座舱解决方案组合"
+                width="64"
+                height="64"
+              />
+            </div>
+            <div class="dc-card-title">获取完整的数字座舱解决方案组合</div>
+            <div class="dc-card-desc"
+              >集成从位置服务API/SDK到完整导航软件的创新方案，满足个性化需求。</div
+            >
+          </div>
+          <div class="dc-card">
+            <div class="dc-card-icon">
+              <img
+                src="src/stats-icon-2.svg"
+                alt="采用定制化组件构建系统"
+                width="64"
+                height="64"
+              />
+            </div>
+            <div class="dc-card-title">采用定制化组件构建系统</div>
+            <div class="dc-card-desc"
+              >通过 OTA 更新导航功能，实现车辆全生命周期内持续升级。</div
+            >
+          </div>
+          <div class="dc-card">
+            <div class="dc-card-icon">
+              <img
+                src="src/stats-icon-3.svg"
+                alt="灵活的 SaaS 模式"
+                width="64"
+                height="64"
+              />
+            </div>
+            <div class="dc-card-title">灵活的 SaaS 模式</div>
+            <div class="dc-card-desc"
+              >通过 SaaS
+              模式交付的互联导航软件，实现极致的定价和生命周期灵活性。</div
+            >
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Global Contact Us Section -->
+    <!-- Flex Card Section: image left, text right, alternating -->
+    <section class="dc-flex-cards">
+      <div class="container dc-flex-cards-inner">
+        <h2 class="dc-flex-cards-title">探索真正互联的导航</h2>
+        <div class="dc-flex-card-list">
+          <div class="dc-flex-card dc-flex-card-row">
+            <div class="dc-flex-card-img"
+              ><img
+                src="src/flex-card-1.jpg"
+                alt="专为软件定义汽车打造的产品组合"
+            /></div>
+            <div class="dc-flex-card-text">
+              <div class="dc-flex-card-title"
+                >专为软件定义汽车打造的产品组合</div
+              >
+              <div class="dc-flex-card-desc"
+                >部署完整软件或采用支持流式地图更新与持续OTA功能交付的软赋能方案。</div
+              >
+            </div>
+          </div>
+          <div class="dc-flex-card dc-flex-card-row dc-flex-card-row-reverse">
+            <div class="dc-flex-card-img"
+              ><img src="src/flex-card-2.jpg" alt="电动汽车专属方案"
+            /></div>
+            <div class="dc-flex-card-text">
+              <div class="dc-flex-card-title">电动汽车专属方案</div>
+              <div class="dc-flex-card-desc"
+                >集成电动汽车功能，消除里程焦虑。接入全球充电桩数据库，具备丰富属性数据、独家机器学习能力、持续反馈机制及定制化充电感知路径规划。</div
+              >
+            </div>
+          </div>
+          <div class="dc-flex-card dc-flex-card-row">
+            <div class="dc-flex-card-img"
+              ><img src="src/flex-card-3.jpg" alt="支持配套应用与手机镜像"
+            /></div>
+            <div class="dc-flex-card-text">
+              <div class="dc-flex-card-title">支持配套应用与手机镜像</div>
+              <div class="dc-flex-card-desc"
+                >通过品牌专属配套应用完善用户体验，基于HERE位置服务实现车机到移动端的无缝切换。</div
+              >
+            </div>
+          </div>
+          <div class="dc-flex-card dc-flex-card-row dc-flex-card-row-reverse">
+            <div class="dc-flex-card-img"
+              ><img src="src/flex-card-4.jpg" alt="商用车辆解决方案"
+            /></div>
+            <div class="dc-flex-card-text">
+              <div class="dc-flex-card-title">商用车辆解决方案</div>
+              <div class="dc-flex-card-desc"
+                >通过使用专为卡车设计的地图内容和服务来优化商用车辆驾驶，为专业驾驶员提供所需的工具，使他们能够更快、更安全、更合规地完成工作。</div
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section class="contact-global-section">
-  <div class="contact-global-content">
-    <h2 class="contact-global-title">联系我们</h2>
-    <p class="contact-global-subheading">一起探讨如何将位置智能融入您的解决方案。</p>
-    <button id="contact-btn" class="contact-global-btn">联系我们</button>
-  </div>
-</section>
+    <!-- Global Contact Us Section -->
 
- <!-- GLOBAL FOOTER -->
+    <section class="contact-global-section">
+      <div class="contact-global-content">
+        <h2 class="contact-global-title">联系我们</h2>
+        <p class="contact-global-subheading"
+          >一起探讨如何将位置智能融入您的解决方案。</p
+        >
+        <button id="contact-btn" class="contact-global-btn">联系我们</button>
+      </div>
+    </section>
 
-  <footer class="global-footer">
-  <div class="footer-main">
-    <div class="footer-brand">
-      <p class="heading-2 text-ondarkcolor-primary">HERE</p>
-    </div>
-    <div class="footer-qr-wrap">
-      <img src="src/wechat-qr.png" alt="WeChat QR Code" class="footer-qr-img" />
-      <span class="footer-qr-caption">Scan QR Code</span>
-    </div>
-  </div>
- 
-</footer>
-  
-  <!-- FOOTER CAPTION -->
-  <footer class="footer">
-    &copy; 2025 HERE Technologies. All rights reserved.
-  </footer>
-</body>
+    <!-- GLOBAL FOOTER -->
+
+    <footer class="global-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="heading-2 text-ondarkcolor-primary">HERE</p>
+        </div>
+        <div class="footer-qr-wrap">
+          <img
+            src="src/wechat-qr.png"
+            alt="WeChat QR Code"
+            class="footer-qr-img"
+          />
+          <span class="footer-qr-caption">扫码关注</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- FOOTER CAPTION -->
+    <footer class="footer">
+      &copy; 2025 HERE Technologies. All rights reserved.
+    </footer>
+  </body>
 </html>
