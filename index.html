@@ -1,85 +1,104 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>HERE WEX China Static Homepage</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- GLOBAL NAVIGATION HEADER -->
-  <header class="navbar">
-    <div class="navbar-container">
-      <a href="index.html" class="navbar-logo" aria-label="HERE Home">
-        <img src="src/logo.svg" alt="HERE Logo" />
-      </a>
-      <nav class="navbar-menu" aria-label="Main Navigation">
-        <ul class="navbar-links">
-          <li><a href="index.html" class="navbar-link">Home</a></li>
-          <li><a href="digital-cockpit.html" class="navbar-link">Digital Cockpit</a></li>
-          <li><a href="blog.html" class="navbar-link">Lotus Emeya + HERE</a></li>
-        </ul>
-      </nav>
-      <div class="navbar-actions">
-        <a href="#" class="btn btn-cta" id="contactCtaBtn">Contact us</a>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HERE Digital Cockpit China</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- GLOBAL NAVIGATION HEADER -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <a href="index.html" class="navbar-logo" aria-label="HERE Home">
+          <img src="src/logo.svg" alt="HERE Logo" />
+        </a>
+        <nav class="navbar-menu" aria-label="Main Navigation">
+          <ul class="navbar-links">
+            <li><a href="index.html" class="navbar-link">主页</a></li>
+            <li
+              ><a href="digital-cockpit.html" class="navbar-link"
+                >数字座舱</a
+              ></li
+            >
+            <li
+              ><a href="blog.html" class="navbar-link"
+                >Lotus Emeya + HERE</a
+              ></li
+            >
+          </ul>
+        </nav>
+        <div class="navbar-actions">
+          <a href="#" class="btn btn-cta" id="contactCtaBtn">联系我们</a>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- HERO SECTION -->
-  <section class="hero-section">
-    <img src="src/hero.jpg" alt="HERE platform hero" class="hero-image">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="text-headline font-bold">The unified map for automakers and enterprises</h1>
-      <div class="hero-buttons">
-        <a href="digital-cockpit.html" class="btn btn-cta">Discover HERE Digital Cockpit</a>
-        <button type="button" class="btn btn-cta" id="contactHeroBtn">Contact sales</button>
+    <!-- Hero Section -->
+    <section
+      class="hero-section dc-hero"
+      style="background-image: url('src/digital-cockpit-hero-2.jpg')"
+    >
+      <div class="hero-overlay">
+        <div class="container hero-content">
+          <h1 class="hero-title"
+            >The unified map for automakers and enterprises</h1
+          >
+          <a href="#" class="btn btn-primary hero-cta" id="contact-btn"
+            >联系我们</a
+          >
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FEATURE SECTION -->
-  <section class="feature-section">
-    <img src="src/feature.jpg" alt="Map feature illustration" class="feature-image">
-    <div class="feature-content">
-      <h2 class="text-headline font-bold mb-6">One map, many solutions</h2>
-      <p class="text-body opacity-80">
-        HERE’s unified live map delivers automotive-grade location data to businesses across industries and use cases.
-      </p>
-    </div>
-  </section>
-  
-  <!-- Global Contact Us Section -->
+    <!-- FEATURE SECTION -->
+    <section class="feature-section">
+      <div class="feature-content">
+        <h2 class="text-headline font-bold mb-6">One map, many solutions</h2>
+        <p class="text-body opacity-80">
+          HERE’s unified live map delivers automotive-grade location data to
+          businesses across industries and use cases.
+        </p>
+      </div>
+    </section>
 
-<section class="contact-global-section">
-  <div class="contact-global-content">
-    <h2 class="contact-global-title">联系我们</h2>
-    <p class="contact-global-subheading">一起探讨如何将位置智能融入您的解决方案。</p>
-    <button id="contact-btn" class="contact-global-btn">联系我们</button>
-  </div>
-</section> 
+    <!-- Global Contact Us Section -->
+
+    <section class="contact-global-section">
+      <div class="contact-global-content">
+        <h2 class="contact-global-title">联系我们</h2>
+        <p class="contact-global-subheading"
+          >一起探讨如何将位置智能融入您的解决方案。</p
+        >
+        <button id="contact-btn" class="contact-global-btn">联系我们</button>
+      </div>
+    </section>
 
     <!-- GLOBAL FOOTER -->
 
-  <footer class="global-footer">
-  <div class="footer-main">
-    <div class="footer-brand">
-      <p class="heading-2 text-ondarkcolor-primary">HERE</p>
-    </div>
-    <div class="footer-qr-wrap">
-      <img src="src/wechat-qr.png" alt="WeChat QR Code" class="footer-qr-img" />
-      <span class="footer-qr-caption">Scan QR Code</span>
-    </div>
-  </div>
- 
-</footer>
-  
-  <!-- FOOTER CAPTION -->
-  <footer class="footer">
-    &copy; 2025 HERE Technologies. All rights reserved.
-  </footer>
+    <footer class="global-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <p class="heading-2 text-ondarkcolor-primary">HERE</p>
+        </div>
+        <div class="footer-qr-wrap">
+          <img
+            src="src/wechat-qr.png"
+            alt="WeChat QR Code"
+            class="footer-qr-img"
+          />
+          <span class="footer-qr-caption">扫码关注</span>
+        </div>
+      </div>
+    </footer>
 
-  <script src="main.js"></script>
-</body>
+    <!-- FOOTER CAPTION -->
+    <footer class="footer">
+      &copy; 2025 HERE Technologies. All rights reserved.
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
 </html>
