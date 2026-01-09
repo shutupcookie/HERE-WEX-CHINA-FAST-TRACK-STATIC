@@ -147,6 +147,8 @@ body {
   z-index: 2;
   color: #fff;
   text-align: center;
+    pointer-events: auto;
+
 }
 .hero-content h1 {
   font-family: "FiraGO", Arial, sans-serif;
