@@ -1175,3 +1175,112 @@ img {
 .mktoForm .mktoGutter { 
   display: none !important; 
 }
+/* =========================================
+   10. PRIVACY POLICY PAGE STYLES
+   ========================================= */
+
+.privacy-page {
+  background: #fff;
+  padding: 80px 24px;
+  min-height: 80vh;
+}
+
+.privacy-container {
+  max-width: 900px; /* Optimal reading width */
+  margin: 0 auto;
+}
+
+.privacy-title {
+  font-family: "FiraGO", Arial, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #002736;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.privacy-meta {
+  color: #5C6F7F;
+  font-size: 1.1rem;
+  margin-bottom: 64px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 32px;
+}
+
+.privacy-body {
+  font-size: 1.1rem;
+  line-height: 1.8; /* Better readability for long text */
+  color: #2E3B4E;
+}
+
+.privacy-body h2 {
+  font-family: "FiraGO", Arial, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #002736;
+  margin-top: 48px;
+  margin-bottom: 24px;
+}
+
+.privacy-body h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #173142;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.privacy-body p {
+  margin-bottom: 24px;
+}
+
+.privacy-body ul {
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+.privacy-body li {
+  margin-bottom: 12px;
+}
+
+.privacy-body a {
+  color: #36e6ef; /* HERE Cyan */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+  border-bottom: 1px solid transparent;
+}
+
+.privacy-body a:hover {
+  color: #2ab6bc;
+  border-bottom-color: #2ab6bc;
+}
+
+/* Callout box for external links */
+.additional-info {
+  background: #F3F6F8;
+  padding: 32px;
+  border-radius: 12px;
+  margin-top: 64px;
+  border-left: 4px solid #36e6ef;
+}
+
+.additional-info p {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .privacy-title {
+    font-size: 2.5rem;
+  }
+  
+  .privacy-page {
+    padding: 48px 24px;
+  }
+  
+  .privacy-body h2 {
+    font-size: 1.5rem;
+    margin-top: 40px;
+  }
+}
