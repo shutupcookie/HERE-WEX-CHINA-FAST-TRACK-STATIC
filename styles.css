@@ -1,4 +1,24 @@
 /** @format */
+/* Global Box Sizing & Reset */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Prevent Horizontal Scroll */
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Make all images fluid */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
 
 body {
   margin: 0;
