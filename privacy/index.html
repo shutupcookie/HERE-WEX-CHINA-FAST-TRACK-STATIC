@@ -133,7 +133,7 @@
           <section class="additional-info">
             <p><strong>更多信息：</strong><br>
             有关其他政策、通知以及 HERE 隐私章程的更多详细信息，请访问我们的全球法律中心：<br>
-            <a href="https://legal.here.com/privacy" target="_blank" class="btn-text">legal.here.com/privacy &rarr;</a>
+            <a href="https://legal.here.com/privacy" target="_blank">legal.here.com/privacy &rarr;</a>
             </p>
           </section>
 
@@ -169,25 +169,25 @@
 
     <script src="../main.js"></script>
     <script type="text/javascript">
-      (function() {
+      (function () {
         var didInit = false;
         function initMunchkin() {
-          if(didInit === false) {
+          if (didInit === false) {
             didInit = true;
-            Munchkin.init('142-UEL-347');
+            Munchkin.init("142-UEL-347");
           }
         }
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
+        var s = document.createElement("script");
+        s.type = "text/javascript";
         s.async = true;
-        s.src = '//munchkin.marketo.net/munchkin.js';
-        s.onreadystatechange = function() {
-          if (this.readyState == 'complete' || this.readyState == 'loaded') {
+        s.src = "//munchkin.marketo.net/munchkin.js";
+        s.onreadystatechange = function () {
+          if (this.readyState == "complete" || this.readyState == "loaded") {
             initMunchkin();
           }
         };
         s.onload = initMunchkin;
-        document.getElementsByTagName('head')[0].appendChild(s);
+        document.getElementsByTagName("head")[0].appendChild(s);
       })();
     </script>
   </body>
