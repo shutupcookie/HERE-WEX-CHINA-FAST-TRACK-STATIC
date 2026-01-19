@@ -6,7 +6,6 @@ function createMarketoModal() {
   const modal = document.createElement("div");
   modal.id = "marketo-modal";
 
-  // IMPORTANT: We inject the <form> tag here so Marketo has a place to land
   modal.innerHTML = `
     <div class="modal-overlay"></div>
     <div class="modal-content">
@@ -32,49 +31,68 @@ function hideMarketoModal() {
 
 // 3. Load Marketo Form Logic
 function loadMarketoForm(formId, munchkinId) {
-  // Uses https to ensure it works locally and on server
   MktoForms2.loadForm(
     `https://go.engage.here.com`,
     munchkinId,
     formId,
     function (form) {
-      // When the form submits successfully:
+      // Success Handler
       form.onSuccess(function (values, followUpUrl) {
-        // Hide the modal
         hideMarketoModal();
-        // Return false to prevent the page from reloading or redirecting
         return false;
       });
     }
   );
 }
 
-// 4. Main Event Listener (Runs when the page finishes loading)
-document.addEventListener("DOMContentLoaded", function () {
-  // Step A: Create the modal HTML immediately
-  createMarketoModal();
+// 4. Helper to Clear Form Fields
+function clearMarketoForm() {
+  if (typeof MktoForms2 === "undefined") return;
 
-  // Step B: Define the constants
+  MktoForms2.whenReady(function (form) {
+    // 1. Native Marketo reset (sometimes insufficient for pre-fill)
+    form.reset(); 
+    
+    // 2. Aggressive Clear: Manually empty all inputs
+    const formElem = form.getFormElem()[0];
+    const inputs = formElem.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+      // Don't clear hidden fields (needed for tracking) or submit buttons
+      if (input.type !== 'hidden' && input.type !== 'submit') {
+        input.value = '';
+        input.checked = false; // For checkboxes
+      }
+    });
+  });
+}
+
+// 5. Main Event Listener
+document.addEventListener("DOMContentLoaded", function () {
+  createMarketoModal();
   const MARKETO_FORM_ID = 3339;
   const MUNCHKIN_ID = "142-UEL-347";
 
-  // Step C: Define the function that opens the form
+  // Open Form Logic
   function openForm(e) {
-    e.preventDefault(); // Stop button from jumping
+    e.preventDefault();
     showMarketoModal();
 
-    // Only ask Marketo to build the form if it hasn't been built yet
     const formEl = document.getElementById("mktoForm_3339");
+    
+    // Case A: First time loading
     if (formEl && formEl.children.length === 0) {
       loadMarketoForm(MARKETO_FORM_ID, MUNCHKIN_ID);
+    } 
+    // Case B: Form already loaded, just clear it
+    else {
+      clearMarketoForm();
     }
   }
 
-  // Step D: Attach this function to ALL "Contact Us" buttons
+  // Attach to Buttons
   const navBtn = document.getElementById("contactCtaBtn");
   if (navBtn) navBtn.addEventListener("click", openForm);
 
-  // Targets buttons in hero, footer, and global sections
   const otherBtns = document.querySelectorAll(
     "#contact-btn, #footer-contact-btn, .contact-global-btn, .hero-cta, .btn-cta, .btn-text"
   );
@@ -82,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", openForm);
   });
 
-  // Step E: Close Modal Logic
+  // Close Modal Logic
   document
     .getElementById("marketo-modal")
     .addEventListener("click", function (e) {
@@ -91,24 +109,19 @@ document.addEventListener("DOMContentLoaded", function () {
         e.target.id === "marketoCloseBtn"
       ) {
         hideMarketoModal();
-        
-        // NEW: Clear the form fields when closing the modal
-        if (typeof MktoForms2 !== "undefined") {
-          MktoForms2.whenReady(function (form) {
-            form.reset();
-          });
-        }
+        // Optional: Clear on close too, just to be safe
+        clearMarketoForm();
       }
     });
 
-  // --- NEW: MOBILE MENU TOGGLE ---
+  // Mobile Menu Logic
   const navToggle = document.getElementById("navbarToggle");
   const navMenu = document.getElementById("navbarMenu");
 
   if (navToggle && navMenu) {
     navToggle.addEventListener("click", function () {
-      navMenu.classList.toggle("active"); // Shows/Hides menu
-      navToggle.classList.toggle("open"); // Animates the burger icon
+      navMenu.classList.toggle("active");
+      navToggle.classList.toggle("open");
     });
   }
 });
