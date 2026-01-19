@@ -31,36 +31,40 @@ function hideMarketoModal() {
 
 // 3. Load Marketo Form Logic
 function loadMarketoForm(formId, munchkinId) {
+  // Uses https to ensure it works locally and on server
   MktoForms2.loadForm(
     `https://go.engage.here.com`,
     munchkinId,
     formId,
     function (form) {
-      // Success Handler
+      // When the form submits successfully:
       form.onSuccess(function (values, followUpUrl) {
+        // Hide the modal
         hideMarketoModal();
+        // Return false to prevent the page from reloading or redirecting
         return false;
       });
     }
   );
 }
 
-// 4. Helper to Clear Form Fields
+// 4. AGGRESSIVE CLEAR FUNCTION
 function clearMarketoForm() {
   if (typeof MktoForms2 === "undefined") return;
 
   MktoForms2.whenReady(function (form) {
-    // 1. Native Marketo reset (sometimes insufficient for pre-fill)
-    form.reset(); 
+    // Standard reset
+    form.reset();
     
-    // 2. Aggressive Clear: Manually empty all inputs
+    // Aggressive: Manually wipe all input values
+    // This overrides Marketo's "Pre-fill" cookie data
     const formElem = form.getFormElem()[0];
-    const inputs = formElem.querySelectorAll('input, select, textarea');
-    inputs.forEach(input => {
-      // Don't clear hidden fields (needed for tracking) or submit buttons
-      if (input.type !== 'hidden' && input.type !== 'submit') {
-        input.value = '';
-        input.checked = false; // For checkboxes
+    const inputs = formElem.querySelectorAll('input:not([type="hidden"]):not([type="submit"]), select, textarea');
+    
+    inputs.forEach(function(input) {
+      input.value = '';
+      if(input.type === 'checkbox' || input.type === 'radio') {
+        input.checked = false;
       }
     });
   });
@@ -74,17 +78,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Open Form Logic
   function openForm(e) {
-    e.preventDefault();
+    e.preventDefault(); 
     showMarketoModal();
 
     const formEl = document.getElementById("mktoForm_3339");
     
-    // Case A: First time loading
+    // Check if form is already loaded
     if (formEl && formEl.children.length === 0) {
       loadMarketoForm(MARKETO_FORM_ID, MUNCHKIN_ID);
-    } 
-    // Case B: Form already loaded, just clear it
-    else {
+    } else {
+      // If it IS loaded, clear it now!
       clearMarketoForm();
     }
   }
@@ -109,12 +112,12 @@ document.addEventListener("DOMContentLoaded", function () {
         e.target.id === "marketoCloseBtn"
       ) {
         hideMarketoModal();
-        // Optional: Clear on close too, just to be safe
+        // Clear it on close too, just to be safe
         clearMarketoForm();
       }
     });
 
-  // Mobile Menu Logic
+  // Mobile Menu Toggle
   const navToggle = document.getElementById("navbarToggle");
   const navMenu = document.getElementById("navbarMenu");
 
