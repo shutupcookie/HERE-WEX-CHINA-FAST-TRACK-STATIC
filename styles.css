@@ -1,23 +1,13 @@
 /** @format */
-/* Global Box Sizing & Reset */
+
+/* =========================================
+   1. GLOBAL RESETS & BOX SIZING
+   ========================================= */
 html {
   box-sizing: border-box;
 }
 *, *:before, *:after {
   box-sizing: inherit;
-}
-
-/* Prevent Horizontal Scroll */
-body {
-  overflow-x: hidden;
-  width: 100%;
-}
-
-/* Make all images fluid */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
 body {
@@ -26,8 +16,19 @@ body {
   font-family: "FiraGO", Arial, sans-serif;
   background: #e9f4f9;
   color: #002736;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================================
+   2. FONTS
+   ========================================= */
 @font-face {
   font-family: "FiraGO";
   src: url("src/FiraGO-Regular.woff2") format("woff2");
@@ -39,7 +40,9 @@ body {
   font-weight: 700;
 }
 
-/* Navigation Styles */
+/* =========================================
+   3. NAVIGATION STYLES
+   ========================================= */
 .navbar {
   position: sticky;
   top: 0;
@@ -102,14 +105,10 @@ body {
   margin-left: 32px;
 }
 
-/* CTA Button (Updated to match Hero Button) */
+/* CTA Button (Matches Hero Style) */
 .btn-cta {
-  background: linear-gradient(
-    90deg,
-    #36e6ef 0%,
-    #3575ec 100%
-  ); /* Hero Blue Gradient */
-  color: #fff; /* White Text */
+  background: linear-gradient(90deg, #36e6ef 0%, #3575ec 100%);
+  color: #fff;
   font-family: "FiraGO", Arial, sans-serif;
   font-weight: 600;
   font-size: 1.2rem;
@@ -117,29 +116,59 @@ body {
   border-radius: 999px;
   padding: 12px 36px;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(54, 230, 239, 0.12); /* Subtle Glow */
+  box-shadow: 0 2px 8px rgba(54, 230, 239, 0.12);
   text-align: center;
   text-decoration: none;
   margin-left: 32px;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    transform 0.1s;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
   display: inline-block;
 }
 
 .btn-cta:hover,
 .btn-cta:focus {
-  background: linear-gradient(
-    90deg,
-    #3575ec 0%,
-    #36e6ef 100%
-  ); /* Flip gradient on hover */
+  background: linear-gradient(90deg, #3575ec 0%, #36e6ef 100%);
   color: #fff;
   transform: translateY(-1px);
 }
 
-/* Hero Section Styles */
+/* =========================================
+   4. HAMBURGER MENU STYLES (MOBILE)
+   ========================================= */
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 200;
+}
+
+.navbar-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #002736;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Animate Burger to X when open */
+.navbar-toggle.open .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.navbar-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggle.open .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* =========================================
+   5. HERO SECTION STYLES
+   ========================================= */
 .hero-section {
   position: relative;
   width: 100vw;
@@ -180,7 +209,7 @@ body {
   z-index: 2;
   color: #fff;
   text-align: center;
-  pointer-events: auto; /* CRITICAL FIX: Makes buttons clickable */
+  pointer-events: auto; /* Fixes unclickable buttons */
 }
 .hero-content h1 {
   font-family: "FiraGO", Arial, sans-serif;
@@ -196,7 +225,7 @@ body {
   justify-content: center;
   margin-top: 1.5rem;
 }
-/* Note: Since we updated .btn-cta above, these overrides are less necessary but kept for safety */
+/* Note: reusing .btn-cta styles where possible */
 .hero-buttons .btn-cta {
   background: linear-gradient(90deg, #36e6ef 0%, #3575ec 100%);
   color: #fff;
@@ -265,7 +294,6 @@ body {
   opacity: 0.85;
 }
 .cta-section .btn-cta {
-  /* Updated to match global button style */
   background: linear-gradient(90deg, #36e6ef 0%, #3575ec 100%);
   color: #fff;
   font-family: "FiraGO", Arial, sans-serif;
@@ -290,34 +318,95 @@ body {
   border-top: 1px solid #e5e7eb;
 }
 
-/* Responsive */
+/* =========================================
+   6. RESPONSIVE / MOBILE STYLES
+   ========================================= */
 @media (max-width: 900px) {
+  /* Navbar: Stack content */
   .navbar-container {
-    flex-direction: column;
-    height: auto;
-    padding: 0 1rem;
-    gap: 6px;
+    padding: 0 24px;
+    height: 72px; /* Fixed height for mobile header */
+    flex-direction: row; /* Logo and Burger side-by-side */
   }
+  
   .navbar-logo {
     margin-right: 0;
   }
+  
+  /* Show Burger */
+  .navbar-toggle {
+    display: flex;
+  }
+
+  /* Hide Desktop "Contact Us" in Header */
+  .navbar-actions {
+    display: none;
+  }
+
+  /* Mobile Menu Container */
+  .navbar-menu {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    width: 100vw;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    
+    /* Hidden state */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    z-index: 99;
+  }
+
+  /* Visible state (toggled by JS) */
+  .navbar-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
   .navbar-links {
-    gap: 28px;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
   }
-  .btn-cta,
-  .hero-buttons .btn-cta,
-  .cta-section .btn-cta {
-    padding: 14px 32px;
-    font-size: 1rem;
-    min-width: 120px;
-  }
+
+  /* Hero: Allow height to grow */
   .hero-section,
   .hero-image,
-  .hero-overlay,
-  .hero-content {
-    height: 400px;
+  .hero-overlay {
+    height: auto !important;
+    min-height: 500px;
   }
-  .hero-content h1,
+
+  .hero-content {
+    position: relative; /* Removes absolute positioning */
+    height: auto;
+    padding: 80px 24px 60px 24px;
+    background: rgba(0, 39, 54, 0.6);
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-buttons .btn-cta {
+    width: 100%;
+    margin: 8px 0;
+  }
+
+  /* Feature & Other Sections */
   .feature-content h2,
   .cta-section h2 {
     font-size: 1.35rem;
@@ -330,7 +419,8 @@ body {
     padding: 2rem 1rem;
   }
 }
-/* Digital Cockpit Hero Section */
+
+/* Digital Cockpit Specific Mobile Tweaks */
 .dc-hero {
   position: relative;
   min-height: 480px;
@@ -381,12 +471,12 @@ body {
 .hero-cta.btn.btn-primary:hover {
   background: linear-gradient(90deg, #3575ec 0%, #36e6ef 100%);
 }
-/* Digital Cockpit Stats Bar */
+
+/* Digital Cockpit Stats */
 .dc-stats-bar {
   background: #173142;
   padding: 56px 0 56px 0;
 }
-
 .dc-stats-bar-content {
   display: flex;
   justify-content: center;
@@ -396,13 +486,11 @@ body {
   margin: 0 auto;
   flex-wrap: wrap;
 }
-
 .dc-stat-item {
   flex: 1 1 0;
   min-width: 260px;
   text-align: center;
 }
-
 .dc-stat-number {
   font-family: "FiraGO-Bold", Arial, sans-serif;
   font-size: 3.2rem;
@@ -412,7 +500,6 @@ body {
   letter-spacing: 0.01em;
   line-height: 1;
 }
-
 .dc-stat-caption {
   color: #fff;
   font-size: 1.18rem;
@@ -422,7 +509,6 @@ body {
   max-width: 320px;
   margin: 0 auto;
 }
-
 @media (max-width: 900px) {
   .dc-stats-bar-content {
     flex-direction: column;
@@ -433,7 +519,8 @@ body {
     min-width: 0;
   }
 }
-/* Digital Cockpit Card List Section */
+
+/* Digital Cockpit Card List */
 .dc-card-list {
   background: #e9f2f5;
   padding: 72px 0 72px 0;
@@ -513,6 +600,7 @@ body {
     font-size: 1.6rem;
   }
 }
+
 /* Flex Cards Section */
 .dc-flex-cards {
   background: #173142;
@@ -580,8 +668,6 @@ body {
   line-height: 1.7;
   letter-spacing: 0.01em;
 }
-
-/* Responsive */
 @media (max-width: 900px) {
   .dc-flex-card-row,
   .dc-flex-card-row.dc-flex-card-row-reverse {
@@ -606,6 +692,7 @@ body {
     gap: 36px;
   }
 }
+
 /* Global Contact Us Section */
 .contact-global-section {
   width: 100vw;
@@ -668,6 +755,8 @@ body {
     padding: 0 10px;
   }
 }
+
+/* Footer Styling */
 .global-footer {
   background: #173142;
   padding: 56px 0 40px 0;
@@ -677,7 +766,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
 .footer-main {
   width: 100%;
   max-width: 1200px;
@@ -689,14 +777,12 @@ body {
   margin-bottom: 30px;
   min-height: 130px;
 }
-
 .footer-brand {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex: 1;
 }
-
 .heading-2 {
   font-family: "FiraGO-Bold", Arial, sans-serif;
   font-size: 2.8rem;
@@ -706,11 +792,9 @@ body {
   color: #fff;
   margin: 0;
 }
-
 .text-ondarkcolor-primary {
   color: #fff;
 }
-
 .footer-qr-wrap {
   display: flex;
   align-items: center;
@@ -718,7 +802,6 @@ body {
   gap: 24px;
   flex: 0 0 auto;
 }
-
 .footer-qr-img {
   width: 120px;
   height: 120px;
@@ -727,7 +810,6 @@ body {
   background: #fff;
   object-fit: cover;
 }
-
 .footer-qr-caption {
   font-size: 1.2rem;
   color: #b8c9d8;
@@ -737,7 +819,6 @@ body {
   align-self: center;
   text-align: left;
 }
-
 .footer-meta-centered {
   width: 100%;
   text-align: center;
@@ -748,7 +829,6 @@ body {
   margin-top: 18px;
   margin-bottom: 0;
 }
-
 @media (max-width: 900px) {
   .footer-main {
     gap: 24px;
@@ -765,7 +845,6 @@ body {
     font-size: 1rem;
   }
 }
-
 @media (max-width: 700px) {
   .footer-main {
     flex-direction: column;
@@ -792,6 +871,10 @@ body {
     margin-top: 16px;
   }
 }
+
+/* =========================================
+   7. MARKETO MODAL STYLES (Includes Mobile)
+   ========================================= */
 #marketo-modal {
   display: none;
   position: fixed;
@@ -831,89 +914,42 @@ body {
   color: #173142;
   cursor: pointer;
 }
-.blog-hero {
-  background: #fff;
-  padding: 48px 24px 12px;
-}
-.blog-hero .hero-inner {
-  max-width: 900px;
-  margin: 0 auto;
-}
-.article-grid {
-  max-width: 1200px;
-  margin: 32px auto;
-  padding: 0 24px 64px;
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 48px;
-  align-items: start;
-}
-@media (max-width: 1000px) {
-  .article-grid {
-    grid-template-columns: 1fr;
-    padding-bottom: 32px;
+
+/* Mobile Modal Fixes */
+@media (max-width: 600px) {
+  #marketo-modal .modal-content {
+    width: 100vw;
+    height: 100vh; /* Full screen on mobile */
+    max-width: none;
+    border-radius: 0;
+    padding: 20px;
+    overflow-y: auto; /* Allow scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-}
-.article-content {
-  background: #fff;
-  padding: 0;
-}
-.article-title {
-  font-family: "FiraGO", Arial, sans-serif;
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #173142;
-  margin: 8px 0 12px;
-}
-.article-meta {
-  color: #6b7d88;
-  font-size: 0.95rem;
-  margin-bottom: 20px;
-}
-.article-lead {
-  font-size: 1.1rem;
-  color: #2e3b4e;
-  margin-bottom: 22px;
-  line-height: 1.5;
-  font-weight: 600;
-}
-.article-image {
-  width: 100%;
-  border-radius: 8px;
-  margin: 18px 0;
-  box-shadow: 0 6px 24px rgba(23, 49, 66, 0.06);
-}
-.article h2 {
-  font-size: 1.25rem;
-  margin-top: 28px;
-  margin-bottom: 14px;
-  color: #173142;
-}
-.article p {
-  color: #334a5a;
-  font-size: 1rem;
-  line-height: 1.75;
-  margin-bottom: 16px;
+  
+  .modal-close {
+    top: 20px;
+    right: 20px;
+  }
 }
 
 /* =========================================
-   Official HERE.com Brand Form Styling
+   8. OFFICIAL HERE BRAND FORM STYLING
    ========================================= */
-
-/* 1. Form Container - Clean Reset */
 .mktoForm {
   width: 100% !important;
   font-family: "FiraGO", Arial, sans-serif !important;
   padding: 0 !important;
-  color: #002736 !important; /* HERE Deep Blue */
+  color: #002736 !important;
 }
 
-/* 2. Labels - Bold, Uppercase, Corporate Look */
 .mktoForm .mktoLabel {
   font-family: "FiraGO", Arial, sans-serif !important;
   font-weight: 700 !important;
   font-size: 0.9rem !important;
-  color: #173142 !important; /* Slightly lighter blue for text */
+  color: #173142 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.02em !important;
   margin-bottom: 8px !important;
@@ -921,7 +957,6 @@ body {
   width: 100% !important;
 }
 
-/* 3. Input Fields - The "Digital Cockpit" Look */
 .mktoForm .mktoField,
 .mktoForm input[type="text"],
 .mktoForm input[type="email"],
@@ -930,11 +965,11 @@ body {
 .mktoForm textarea,
 .mktoForm select {
   width: 100% !important;
-  height: 50px !important; /* Taller, touch-friendly touch targets */
+  height: 50px !important;
   padding: 0 16px !important;
-  background-color: #f3f6f8 !important; /* Very light grey/blue bg */
-  border: 1px solid #cfd9e0 !important; /* Subtle border */
-  border-radius: 4px !important; /* Small radius for professional look */
+  background-color: #F3F6F8 !important;
+  border: 1px solid #CFD9E0 !important;
+  border-radius: 4px !important;
   font-size: 1rem !important;
   font-family: "FiraGO", Arial, sans-serif !important;
   color: #002736 !important;
@@ -945,22 +980,19 @@ body {
   box-sizing: border-box !important;
 }
 
-/* 4. Focus State - The "Cyan" Glow */
 .mktoForm input:focus,
 .mktoForm select:focus,
 .mktoForm textarea:focus {
-  border-color: #36e6ef !important; /* HERE Cyan */
+  border-color: #36e6ef !important;
   background-color: #ffffff !important;
-  box-shadow: 0 0 0 3px rgba(54, 230, 239, 0.15) !important; /* Subtle glow */
+  box-shadow: 0 0 0 3px rgba(54, 230, 239, 0.15) !important;
 }
 
-/* 5. Text Area (Message Box) specific */
 .mktoForm textarea {
   height: 120px !important;
   padding-top: 12px !important;
 }
 
-/* 6. Submit Button - Matches your "Contact Us" CTA */
 .mktoForm .mktoButtonRow {
   width: 100% !important;
   text-align: center !important;
@@ -973,19 +1005,16 @@ body {
 }
 
 .mktoForm .mktoButton {
-  /* Match the .btn-cta gradient from your site */
   background: linear-gradient(90deg, #6df3f8 0%, #96f7d2 100%) !important;
-  color: #002736 !important; /* Dark text on bright button */
+  color: #002736 !important;
   font-family: "FiraGO", Arial, sans-serif !important;
   font-weight: 700 !important;
   font-size: 1.1rem !important;
   padding: 16px 48px !important;
   border: none !important;
-  border-radius: 999px !important; /* Pill shape */
+  border-radius: 999px !important;
   cursor: pointer !important;
-  transition:
-    transform 0.1s ease,
-    filter 0.2s ease;
+  transition: transform 0.1s ease, filter 0.2s ease;
   width: 100% !important;
   text-transform: none !important;
 }
@@ -999,13 +1028,8 @@ body {
   transform: translateY(1px);
 }
 
-/* 7. Hide Marketo Clutter */
-.mktoForm .mktoAsterisk {
-  display: none !important;
-}
-.mktoForm .mktoOffset {
-  display: none !important;
-}
-.mktoForm .mktoGutter {
-  display: none !important;
+.mktoForm .mktoAsterisk, 
+.mktoForm .mktoOffset, 
+.mktoForm .mktoGutter { 
+  display: none !important; 
 }
