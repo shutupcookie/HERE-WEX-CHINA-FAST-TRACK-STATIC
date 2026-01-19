@@ -875,7 +875,7 @@ img {
 }
 
 /* =========================================
-   8. BLOG PAGE STYLES (Clean Grid Layout)
+   8. BLOG PAGE STYLES (Single Column List Layout)
    ========================================= */
 
 /* Blog Header (Hero) */
@@ -916,29 +916,29 @@ img {
   font-weight: 400;
 }
 
-/* Card Grid Container */
+/* 1. The Container: Single Column, Centered */
 .article-grid {
-  max-width: 1200px;
+  max-width: 1000px; /* Constrain width slightly for readability */
   margin: 64px auto;
   padding: 0 24px;
-  display: grid;
-  /* 3 columns on Desktop, auto-adjusts to 1 on Mobile */
-  /* Updated to 280px to prevent squishing on small phones */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
-  align-items: start;
+  display: flex;       /* Use Flex instead of Grid for a simple vertical stack */
+  flex-direction: column;
+  gap: 48px;           /* Space between cards */
 }
 
-/* Article Cards */
+/* 2. The Card: Horizontal Layout on Desktop */
 .article-card {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 39, 54, 0.08); /* Soft shadow */
+  box-shadow: 0 4px 20px rgba(0, 39, 54, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  height: 100%; /* Make cards equal height */
-  display: flex;
-  flex-direction: column;
+  
+  /* Desktop Magic: Side-by-Side */
+  display: flex; 
+  flex-direction: row; 
+  align-items: stretch; /* Make image and text same height */
+  min-height: 320px;
 }
 
 .article-card:hover {
@@ -946,66 +946,96 @@ img {
   box-shadow: 0 12px 32px rgba(0, 39, 54, 0.12);
 }
 
+/* 3. The Image: Takes up 45% of the width on the left */
 .article-image {
-  width: 100%;
-  height: 240px;
+  width: 45%; 
+  min-width: 45%; /* Force it to stay wide */
   object-fit: cover;
   display: block;
+  margin: 0; /* Remove default margin */
 }
 
+/* 4. The Content: Takes up the remaining space on the right */
 .article-content {
-  padding: 32px;
-  flex: 1;
+  padding: 48px;
   display: flex;
   flex-direction: column;
+  justify-content: center; /* Center text vertically */
 }
 
 .article-content h2 {
   font-family: "FiraGO", Arial, sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #002736;
   margin-top: 0;
-  margin-bottom: 16px;
-  line-height: 1.3;
+  margin-bottom: 20px;
+  line-height: 1.2;
 }
 
 .article-content p {
   color: #5C6F7F;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 0;
 }
 
-/* Text Link Style inside cards */
+/* Link Styles */
 .btn-text {
   color: #002736;
   font-weight: 700;
   text-decoration: none;
-  margin-top: 16px;
+  margin-top: 24px;
   display: inline-block;
   border-bottom: 2px solid #36e6ef;
   transition: color 0.2s;
+  align-self: flex-start; /* Don't stretch the button */
 }
 .btn-text:hover {
   color: #36e6ef;
 }
 
-/* Mobile Tweaks for Blog */
+/* 5. Special Case: Text-Only Cards (like your 3rd one) */
+/* If a card has no image inside, make the content full width */
+.article-card:not(:has(.article-image)) .article-content {
+  width: 100%;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+   ========================================= */
 @media (max-width: 900px) {
+  .blog-hero {
+    padding: 48px 24px;
+  }
   .article-title {
     font-size: 2rem;
   }
-  .blog-hero {
-    padding: 48px 20px;
-  }
+  
   .article-grid {
-    grid-template-columns: 1fr; /* Force 1 column on mobile */
     gap: 32px;
     margin: 40px auto;
   }
+
+  /* Stack them vertically on mobile */
+  .article-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+
   .article-image {
-    height: 200px;
+    width: 100%; /* Full width image */
+    min-width: 100%;
+    height: 240px; /* Fixed height for image */
+  }
+
+  .article-content {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .article-content h2 {
+    font-size: 1.5rem;
   }
 }
 
