@@ -1,6 +1,6 @@
 /** @format */
 
-// 1. Modal HTML (Generates the popup and the empty form container)
+// 1. Create Modal (Injects HTML)
 function createMarketoModal() {
   if (document.getElementById("marketo-modal")) return;
   const modal = document.createElement("div");
@@ -32,7 +32,7 @@ function hideMarketoModal() {
 
 // 3. Load Marketo Form Logic
 function loadMarketoForm(formId, munchkinId) {
-  // FIX: Added 'https:' to ensure it loads even when testing locally
+  // Uses https to ensure it works locally and on server
   MktoForms2.loadForm(
     `https://go.engage.here.com`,
     munchkinId,
@@ -54,13 +54,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // Step A: Create the modal HTML immediately
   createMarketoModal();
 
-  // Step B: Define the constants from your email
+  // Step B: Define the constants
   const MARKETO_FORM_ID = 3339;
   const MUNCHKIN_ID = "142-UEL-347";
 
   // Step C: Define the function that opens the form
   function openForm(e) {
-    e.preventDefault(); // Stop the button from jumping to #
+    e.preventDefault(); // Stop button from jumping
     showMarketoModal();
 
     // Only ask Marketo to build the form if it hasn't been built yet
@@ -71,12 +71,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Step D: Attach this function to ALL "Contact Us" buttons
-
-  // 1. The Navbar Button
   const navBtn = document.getElementById("contactCtaBtn");
   if (navBtn) navBtn.addEventListener("click", openForm);
 
-  // 2. The Hero and Footer buttons
+  // Targets buttons in hero, footer, and global sections
   const otherBtns = document.querySelectorAll(
     "#contact-btn, #footer-contact-btn, .contact-global-btn, .hero-cta, .btn-cta, .btn-text"
   );
@@ -93,6 +91,13 @@ document.addEventListener("DOMContentLoaded", function () {
         e.target.id === "marketoCloseBtn"
       ) {
         hideMarketoModal();
+        
+        // NEW: Clear the form fields when closing the modal
+        if (typeof MktoForms2 !== "undefined") {
+          MktoForms2.whenReady(function (form) {
+            form.reset();
+          });
+        }
       }
     });
 
@@ -102,8 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (navToggle && navMenu) {
     navToggle.addEventListener("click", function () {
-      navMenu.classList.toggle("active");
-      navToggle.classList.toggle("open");
+      navMenu.classList.toggle("active"); // Shows/Hides menu
+      navToggle.classList.toggle("open"); // Animates the burger icon
     });
   }
 });
