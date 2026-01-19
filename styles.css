@@ -16,7 +16,7 @@ body {
   font-family: "FiraGO", Arial, sans-serif;
   background: #e9f4f9;
   color: #002736;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
   width: 100%;
 }
 
@@ -155,7 +155,6 @@ img {
   transition: all 0.3s ease;
 }
 
-/* Animate Burger to X when open */
 .navbar-toggle.open .bar:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
@@ -225,7 +224,6 @@ img {
   justify-content: center;
   margin-top: 1.5rem;
 }
-/* Reusing .btn-cta styles */
 .hero-buttons .btn-cta {
   background: linear-gradient(90deg, #36e6ef 0%, #3575ec 100%);
   color: #fff;
@@ -322,28 +320,20 @@ img {
    6. RESPONSIVE / MOBILE STYLES
    ========================================= */
 @media (max-width: 900px) {
-  /* Navbar: Stack content */
   .navbar-container {
     padding: 0 24px;
     height: 72px; 
     flex-direction: row; 
   }
-  
   .navbar-logo {
     margin-right: 0;
   }
-  
-  /* Show Burger */
   .navbar-toggle {
     display: flex;
   }
-
-  /* Hide Desktop "Contact Us" in Header */
   .navbar-actions {
     display: none;
   }
-
-  /* Mobile Menu Container */
   .navbar-menu {
     position: fixed;
     top: 72px;
@@ -354,59 +344,46 @@ img {
     align-items: center;
     padding: 32px 0;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    
-    /* Hidden state */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-20px);
     transition: all 0.3s ease;
     z-index: 99;
   }
-
-  /* Visible state (toggled by JS) */
   .navbar-menu.active {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
-
   .navbar-links {
     flex-direction: column;
     gap: 32px;
     align-items: center;
   }
-
-  /* Hero: Allow height to grow */
   .hero-section,
   .hero-image,
   .hero-overlay {
     height: auto !important;
     min-height: 500px;
   }
-
   .hero-content {
     position: relative; 
     height: auto;
     padding: 80px 24px 60px 24px;
     background: rgba(0, 39, 54, 0.6);
   }
-  
   .hero-content h1 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
   }
-  
   .hero-buttons {
     flex-direction: column;
     width: 100%;
   }
-  
   .hero-buttons .btn-cta {
     width: 100%;
     margin: 8px 0;
   }
-
-  /* Feature & Other Sections */
   .feature-content h2,
   .cta-section h2 {
     font-size: 1.35rem;
@@ -474,7 +451,6 @@ img {
   background: linear-gradient(90deg, #3575ec 0%, #36e6ef 100%);
 }
 
-/* Digital Cockpit Stats */
 .dc-stats-bar {
   background: #173142;
   padding: 56px 0 56px 0;
@@ -522,7 +498,6 @@ img {
   }
 }
 
-/* Digital Cockpit Card List */
 .dc-card-list {
   background: #e9f2f5;
   padding: 72px 0 72px 0;
@@ -603,7 +578,6 @@ img {
   }
 }
 
-/* Flex Cards Section */
 .dc-flex-cards {
   background: #173142;
   padding: 72px 0 72px 0;
@@ -695,7 +669,6 @@ img {
   }
 }
 
-/* Global Contact Us Section */
 .contact-global-section {
   width: 100vw;
   background: #5ae7e5;
@@ -758,7 +731,6 @@ img {
   }
 }
 
-/* Footer Styling */
 .global-footer {
   background: #173142;
   padding: 56px 0 40px 0;
@@ -877,20 +849,16 @@ img {
 /* =========================================
    8. BLOG PAGE STYLES (Single Column List Layout)
    ========================================= */
-
-/* Blog Header (Hero) */
 .blog-hero {
   background: #fff;
   padding: 80px 24px 40px 24px;
   text-align: center;
   border-bottom: 1px solid #e5e7eb;
 }
-
 .blog-hero .hero-inner {
   max-width: 800px;
   margin: 0 auto;
 }
-
 .article-meta {
   color: #36e6ef; /* HERE Cyan */
   font-weight: 700;
@@ -899,7 +867,6 @@ img {
   text-transform: uppercase;
   margin-bottom: 16px;
 }
-
 .article-title {
   font-family: "FiraGO", Arial, sans-serif;
   font-size: 3rem;
@@ -908,33 +875,303 @@ img {
   margin: 0 0 24px 0;
   line-height: 1.1;
 }
-
 .article-lead {
   font-size: 1.25rem;
   color: #5C6F7F;
   line-height: 1.6;
   font-weight: 400;
 }
-
-/* 1. The Container: Single Column, Centered */
 .article-grid {
-  max-width: 1000px; /* Constrain width slightly for readability */
+  max-width: 1000px;
   margin: 64px auto;
   padding: 0 24px;
-  display: flex;       /* Use Flex instead of Grid for a simple vertical stack */
+  display: flex;
   flex-direction: column;
-  gap: 48px;           /* Space between cards */
+  gap: 48px;
 }
-
-/* 2. The Card: Horizontal Layout on Desktop */
 .article-card {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 39, 54, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  
-  /* Desktop Magic: Side-by-Side */
   display: flex; 
   flex-direction: row; 
-  align-items: stretch; /* Make image
+  align-items: stretch;
+  min-height: 320px;
+}
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 39, 54, 0.12);
+}
+.article-image {
+  width: 45%; 
+  min-width: 45%;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+}
+.article-content {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.article-content h2 {
+  font-family: "FiraGO", Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #002736;
+  margin-top: 0;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.article-content p {
+  color: #5C6F7F;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.btn-text {
+  color: #002736;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 24px;
+  display: inline-block;
+  border-bottom: 2px solid #36e6ef;
+  transition: color 0.2s;
+  align-self: flex-start;
+}
+.btn-text:hover {
+  color: #36e6ef;
+}
+.article-card:not(:has(.article-image)) .article-content {
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .blog-hero {
+    padding: 48px 24px;
+  }
+  .article-title {
+    font-size: 2rem;
+  }
+  .article-grid {
+    gap: 32px;
+    margin: 40px auto;
+  }
+  .article-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .article-image {
+    width: 100%;
+    min-width: 100%;
+    height: 240px;
+  }
+  .article-content {
+    width: 100%;
+    padding: 24px;
+  }
+  .article-content h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* =========================================
+   9. OPTIMIZED MARKETO MODAL (Desktop & Mobile)
+   ========================================= */
+#marketo-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInBackground 0.3s ease forwards;
+}
+#marketo-modal .modal-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 39, 54, 0.65);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+#marketo-modal .modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 440px;
+  width: 90vw;
+  z-index: 2;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  max-height: 90vh; /* Allow scrolling if tall */
+  overflow-y: auto;
+  transform: scale(0.95);
+  opacity: 0;
+  animation: modalPopUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.1s;
+}
+#marketo-modal .modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background: #F3F6F8;
+  border-radius: 50%;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #173142;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10;
+}
+#marketo-modal .modal-close:hover {
+  background: #E5E9EC;
+  transform: rotate(90deg);
+}
+@keyframes fadeInBackground {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes modalPopUp {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@media (max-width: 600px) {
+  #marketo-modal {
+    align-items: flex-end;
+  }
+  #marketo-modal .modal-content {
+    width: 100vw;
+    max-width: none;
+    border-radius: 24px 24px 0 0;
+    padding: 32px 24px 48px 24px;
+    margin: 0;
+    max-height: 85vh;
+    overflow-y: auto;
+    animation: slideUpBottom 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    transform: translateY(100%);
+  }
+  #marketo-modal .modal-content::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background-color: #E5E9EC;
+    border-radius: 4px;
+  }
+  #marketo-modal .modal-close {
+    top: 20px;
+    right: 20px;
+    background: transparent;
+  }
+  @keyframes slideUpBottom {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+}
+
+/* =========================================
+   OFFICIAL HERE BRAND FORM STYLING
+   ========================================= */
+.mktoForm {
+  width: 100% !important;
+  font-family: "FiraGO", Arial, sans-serif !important;
+  padding: 0 !important;
+  color: #002736 !important;
+}
+.mktoForm .mktoLabel {
+  font-family: "FiraGO", Arial, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  color: #173142 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  margin-bottom: 6px !important;
+  display: block !important;
+  width: 100% !important;
+}
+.mktoForm .mktoField,
+.mktoForm input[type="text"],
+.mktoForm input[type="email"],
+.mktoForm input[type="tel"],
+.mktoForm input[type="url"],
+.mktoForm textarea,
+.mktoForm select {
+  width: 100% !important;
+  height: 44px !important;
+  padding: 0 16px !important;
+  background-color: #F3F6F8 !important;
+  border: 1px solid #CFD9E0 !important;
+  border-radius: 4px !important;
+  font-size: 1rem !important;
+  font-family: "FiraGO", Arial, sans-serif !important;
+  color: #002736 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  margin-bottom: 15px !important;
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box !important;
+}
+.mktoForm input:focus,
+.mktoForm select:focus,
+.mktoForm textarea:focus {
+  border-color: #36e6ef !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(54, 230, 239, 0.15) !important;
+}
+.mktoForm textarea {
+  height: 100px !important;
+  padding-top: 12px !important;
+}
+.mktoForm .mktoButtonRow {
+  width: 100% !important;
+  text-align: center !important;
+  margin-top: 12px !important;
+}
+.mktoForm .mktoButtonWrap {
+  width: 100% !important;
+  margin: 0 !important;
+}
+.mktoForm .mktoButton {
+  background: linear-gradient(90deg, #6df3f8 0%, #96f7d2 100%) !important;
+  color: #002736 !important;
+  font-family: "FiraGO", Arial, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  padding: 16px 48px !important;
+  border: none !important;
+  border-radius: 999px !important;
+  cursor: pointer !important;
+  transition: transform 0.1s ease, filter 0.2s ease;
+  width: 100% !important;
+  text-transform: none !important;
+}
+.mktoForm .mktoButton:hover {
+  filter: brightness(0.95);
+  transform: translateY(-1px);
+}
+.mktoForm .mktoButton:active {
+  transform: translateY(1px);
+}
+.mktoForm .mktoAsterisk, 
+.mktoForm .mktoOffset, 
+.mktoForm .mktoGutter { 
+  display: none !important; 
+}
