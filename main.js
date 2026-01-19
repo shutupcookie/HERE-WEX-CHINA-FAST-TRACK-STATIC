@@ -29,16 +29,13 @@ function hideMarketoModal() {
   if (modal) modal.style.display = "none";
 }
 
-// 3. THE FIX: Aggressive Clear & Unlock Function
+// 3. THE RESET FUNCTION (Clears Data AND Unlocks Button)
 function resetMarketoForm(form) {
   if (!form) return;
 
   const formElem = form.getFormElem()[0];
   
-  // A. Reset Values
-  form.reset(); 
-  
-  // B. Manually wipe inputs (Marketo persistence fix)
+  // A. Clear all text inputs
   const inputs = formElem.querySelectorAll('input, select, textarea');
   inputs.forEach(input => {
     if(input.type !== 'hidden' && input.type !== 'submit') {
@@ -49,15 +46,14 @@ function resetMarketoForm(form) {
     }
   });
 
-  // C. UNLOCK SUBMIT BUTTON (Fix for "Frozen" button)
+  // B. FIX: Unlock the Submit Button (This fixes the "Frozen" issue)
   const submitBtn = formElem.querySelector('.mktoButton');
   if(submitBtn) {
-    submitBtn.disabled = false; // Enable clicks
+    submitBtn.disabled = false;  // Enable clicking again
     submitBtn.innerHTML = '提交'; // Reset text to "Submit"
-    submitBtn.style.width = "100%"; // Ensure styling stays consistent
   }
   
-  // D. Tell Marketo the form is ready again
+  // C. Tell Marketo the form is ready to submit again
   form.submittable(true); 
 }
 
@@ -68,15 +64,15 @@ function loadMarketoForm(formId, munchkinId) {
     munchkinId,
     formId,
     function (form) {
-      // Success Handler
+      // FIX: What happens when the user submits successfully?
       form.onSuccess(function (values, followUpUrl) {
-        // 1. Hide the modal
+        // 1. Hide the modal immediately
         hideMarketoModal();
         
-        // 2. CRITICAL FIX: Reset and Unlock the form for next time!
+        // 2. Wipe the data AND Unlock the button for next time
         resetMarketoForm(form);
 
-        // 3. Prevent page reload
+        // 3. Return false to stop the page from reloading
         return false;
       });
     }
@@ -91,16 +87,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Open Form Logic
   function openForm(e) {
-    e.preventDefault();
+    e.preventDefault(); 
     showMarketoModal();
 
     const formEl = document.getElementById("mktoForm_3339");
     
-    // If form NOT loaded yet:
+    // If form hasn't loaded yet, load it.
     if (formEl && formEl.children.length === 0) {
       loadMarketoForm(MARKETO_FORM_ID, MUNCHKIN_ID);
     } 
-    // If form IS loaded: Ensure it is clean
+    // If it is already loaded, just make sure it's clean and unlocked.
     else if (typeof MktoForms2 !== "undefined") {
       MktoForms2.whenReady(function (form) {
         resetMarketoForm(form);
@@ -119,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", openForm);
   });
 
-  // Close Modal Logic (Clicking X or Background)
+  // Close Modal Logic
   document
     .getElementById("marketo-modal")
     .addEventListener("click", function (e) {
@@ -128,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.target.id === "marketoCloseBtn"
       ) {
         hideMarketoModal();
-        // Also reset when closing manually
+        // Also reset if they close it without submitting
         if (typeof MktoForms2 !== "undefined") {
           MktoForms2.whenReady(function (form) {
             resetMarketoForm(form);
