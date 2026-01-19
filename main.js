@@ -29,45 +29,58 @@ function hideMarketoModal() {
   if (modal) modal.style.display = "none";
 }
 
-// 3. Load Marketo Form Logic
+// 3. THE FIX: Aggressive Clear & Unlock Function
+function resetMarketoForm(form) {
+  if (!form) return;
+
+  const formElem = form.getFormElem()[0];
+  
+  // A. Reset Values
+  form.reset(); 
+  
+  // B. Manually wipe inputs (Marketo persistence fix)
+  const inputs = formElem.querySelectorAll('input, select, textarea');
+  inputs.forEach(input => {
+    if(input.type !== 'hidden' && input.type !== 'submit') {
+      input.value = '';
+      if(input.type === 'checkbox' || input.type === 'radio') {
+        input.checked = false;
+      }
+    }
+  });
+
+  // C. UNLOCK SUBMIT BUTTON (Fix for "Frozen" button)
+  const submitBtn = formElem.querySelector('.mktoButton');
+  if(submitBtn) {
+    submitBtn.disabled = false; // Enable clicks
+    submitBtn.innerHTML = '提交'; // Reset text to "Submit"
+    submitBtn.style.width = "100%"; // Ensure styling stays consistent
+  }
+  
+  // D. Tell Marketo the form is ready again
+  form.submittable(true); 
+}
+
+// 4. Load Marketo Form Logic
 function loadMarketoForm(formId, munchkinId) {
-  // Uses https to ensure it works locally and on server
   MktoForms2.loadForm(
     `https://go.engage.here.com`,
     munchkinId,
     formId,
     function (form) {
-      // When the form submits successfully:
+      // Success Handler
       form.onSuccess(function (values, followUpUrl) {
-        // Hide the modal
+        // 1. Hide the modal
         hideMarketoModal();
-        // Return false to prevent the page from reloading or redirecting
+        
+        // 2. CRITICAL FIX: Reset and Unlock the form for next time!
+        resetMarketoForm(form);
+
+        // 3. Prevent page reload
         return false;
       });
     }
   );
-}
-
-// 4. AGGRESSIVE CLEAR FUNCTION
-function clearMarketoForm() {
-  if (typeof MktoForms2 === "undefined") return;
-
-  MktoForms2.whenReady(function (form) {
-    // Standard reset
-    form.reset();
-    
-    // Aggressive: Manually wipe all input values
-    // This overrides Marketo's "Pre-fill" cookie data
-    const formElem = form.getFormElem()[0];
-    const inputs = formElem.querySelectorAll('input:not([type="hidden"]):not([type="submit"]), select, textarea');
-    
-    inputs.forEach(function(input) {
-      input.value = '';
-      if(input.type === 'checkbox' || input.type === 'radio') {
-        input.checked = false;
-      }
-    });
-  });
 }
 
 // 5. Main Event Listener
@@ -78,17 +91,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Open Form Logic
   function openForm(e) {
-    e.preventDefault(); 
+    e.preventDefault();
     showMarketoModal();
 
     const formEl = document.getElementById("mktoForm_3339");
     
-    // Check if form is already loaded
+    // If form NOT loaded yet:
     if (formEl && formEl.children.length === 0) {
       loadMarketoForm(MARKETO_FORM_ID, MUNCHKIN_ID);
-    } else {
-      // If it IS loaded, clear it now!
-      clearMarketoForm();
+    } 
+    // If form IS loaded: Ensure it is clean
+    else if (typeof MktoForms2 !== "undefined") {
+      MktoForms2.whenReady(function (form) {
+        resetMarketoForm(form);
+      });
     }
   }
 
@@ -103,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", openForm);
   });
 
-  // Close Modal Logic
+  // Close Modal Logic (Clicking X or Background)
   document
     .getElementById("marketo-modal")
     .addEventListener("click", function (e) {
@@ -112,12 +128,16 @@ document.addEventListener("DOMContentLoaded", function () {
         e.target.id === "marketoCloseBtn"
       ) {
         hideMarketoModal();
-        // Clear it on close too, just to be safe
-        clearMarketoForm();
+        // Also reset when closing manually
+        if (typeof MktoForms2 !== "undefined") {
+          MktoForms2.whenReady(function (form) {
+            resetMarketoForm(form);
+          });
+        }
       }
     });
 
-  // Mobile Menu Toggle
+  // Mobile Menu Logic
   const navToggle = document.getElementById("navbarToggle");
   const navMenu = document.getElementById("navbarMenu");
 
