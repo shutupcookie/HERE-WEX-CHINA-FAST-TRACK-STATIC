@@ -923,7 +923,8 @@ img {
   padding: 0 24px;
   display: grid;
   /* 3 columns on Desktop, auto-adjusts to 1 on Mobile */
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  /* Updated to 280px to prevent squishing on small phones */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 40px;
   align-items: start;
 }
