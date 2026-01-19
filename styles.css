@@ -1,5 +1,57 @@
 /** @format */
 
+:root {
+  /* HDS Colors - Derived from HERE Digital Cockpit Palette */
+  --hds-foreground-primary: #002736; /* Dark Blue */
+  --hds-foreground-secondary: #3f536e; /* Slate */
+  --hds-foreground-tertiary: #7f8d9b; /* Light Slate */
+  --hds-background-primary: #ffffff;
+  --hds-background-secondary: #e9f4f9; /* Light Blue */
+  
+  --hds-object-focused: #36e6ef; /* Teal */
+  --hds-red-600: #d93025; /* Error Red */
+  --hds-white: #ffffff;
+  --hds-negative: #d93025;
+  
+  --hds-link-color: #002736;
+  --hds-cta-inline-color: #002736;
+  
+  /* HDS Typography */
+  --hds-body-font-size: 16px;
+  --hds-body-font-weight: 400;
+  --hds-body-line-height: 1.5;
+  --hds-body-letter-spacing: 0;
+  
+  --hds-body-small-font-size: 0.875rem;
+  --hds-body-small-font-weight: 400;
+  --hds-body-small-line-height: 1.4;
+  --hds-body-small-letter-spacing: 0;
+
+  /* HDS Button */
+  --hds-button-font-family: "FiraGO", Arial, sans-serif;
+  --hds-button-font-size: 1.1rem;
+  --hds-button-font-weight: 600;
+  --hds-button-line-height: 1.2;
+  --hds-button-letter-spacing: 0.01em;
+  --hds-primary-button-new-background-text: #002736;
+  --hds-gradient-radial-new: linear-gradient(90deg, #6df3f8 0%, #96f7d2 100%);
+
+  /* HDS Spacing/Layout */
+  --hds-spacing-2: 8px;
+  --hds-spacing-4: 16px;
+  --hds-corner-radius: 4px;
+  
+  /* Overlays */
+  --hds-gray-alpha-060: rgba(0, 0, 0, 0.6);
+  --hds-overlay-blur: blur(4px);
+
+  /* Misc */
+  --gray-2: #3f536e;
+  --gray-5: #e9f2f5;
+  --white: #ffffff;
+  --hds-list-bullet-color: #36e6ef;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -1100,7 +1152,7 @@ body {
   padding: 10px 16px;
   border-width: 1px;
   margin: 0;
-  background-color: transparent;
+  background-color: var(--hds-background-primary);
   border-style: solid;
   border-radius: var(--hds-corner-radius);
   border-color: var(--hds-foreground-tertiary);
@@ -1108,7 +1160,8 @@ body {
   font-size: var(--hds-body-small-font-size);
   line-height: var(--hds-body-small-line-height);
   letter-spacing: var(--hds-body-small-letter-spacing);
-  color: var(--hds-foreground-secondary);
+  color: var(--hds-foreground-primary);
+  transition: border-color 0.2s;
 }
 
 .mktoForm .mktoFormRow .mktoFormCol .mktoField:focus,
@@ -1116,6 +1169,7 @@ body {
   border-color: var(--hds-object-focused);
   border-width: 2px;
   outline: 0;
+  box-shadow: 0 0 0 2px rgba(54, 230, 239, 0.2);
 }
 
 .mktoForm .mktoFormRow .mktoFormCol .mktoField.mktoInvalid:focus,
@@ -1124,23 +1178,23 @@ body {
 }
 
 .mktoForm .mktoFormRow .mktoFormCol .mktoField::-webkit-input-placeholder {
-  color: transparent;
+  color: var(--hds-foreground-tertiary);
 }
 
 .mktoForm .mktoFormRow .mktoFormCol .mktoField::-moz-placeholder {
-  color: transparent;
+  color: var(--hds-foreground-tertiary);
 }
 
 .mktoForm .mktoFormRow .mktoFormCol .mktoField:-ms-input-placeholder {
-  color: transparent;
+  color: var(--hds-foreground-tertiary);
 }
 
 .mktoForm .mktoFormRow .mktoFormCol .mktoField::-ms-input-placeholder {
-  color: transparent;
+  color: var(--hds-foreground-tertiary);
 }
 
 .mktoForm .mktoFormRow .mktoFormCol .mktoField::placeholder {
-  color: transparent;
+  color: var(--hds-foreground-tertiary);
 }
 
 .mktoForm .mktoFormRow .mktoFormCol ul {
