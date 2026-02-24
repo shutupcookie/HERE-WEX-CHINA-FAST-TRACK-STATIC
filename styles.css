@@ -1285,3 +1285,21 @@ img {
 .mktoForm .mktoGutter { 
   display: none !important; 
 }
+
+/* Add spacing between side-by-side Marketo fields (e.g., First & Last Name) */
+.mktoForm .mktoFormCol {
+  box-sizing: border-box !important;
+}
+
+/* Targets the second column in a row and pushes it away from the first */
+.mktoForm .mktoFormCol + .mktoFormCol {
+  padding-left: 16px !important;
+}
+
+/* Ensure they stack cleanly on mobile devices instead of shrinking side-by-side */
+@media (max-width: 600px) {
+  .mktoForm .mktoFormCol {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+}
