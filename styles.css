@@ -1286,20 +1286,36 @@ img {
   display: none !important; 
 }
 
-/* Add spacing between side-by-side Marketo fields (e.g., First & Last Name) */
+/* =========================================
+   MARKETO FORM LAYOUT & SPACING FIXES
+   ========================================= */
+
+/* 1. Turn every form row into a flexible container */
+.mktoForm .mktoFormRow {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  gap: 16px !important; /* Perfect gap for First/Last Name */
+  clear: both !important;
+}
+
+/* 2. Tell the columns how to behave inside the row */
 .mktoForm .mktoFormCol {
-  box-sizing: border-box !important;
+  flex: 1 1 0 !important; /* Auto-sizes: 1 item = 100% width, 2 items = 50% width */
+  width: auto !important; /* Strips out Marketo's nasty inline pixel widths */
+  min-width: 0 !important; /* Prevents fields from overflowing */
+  padding: 0 !important; 
+  margin: 0 !important;
 }
 
-/* Targets the second column in a row and pushes it away from the first */
-.mktoForm .mktoFormCol + .mktoFormCol {
-  padding-left: 16px !important;
-}
-
-/* Ensure they stack cleanly on mobile devices instead of shrinking side-by-side */
+/* 3. Mobile formatting: Stack everything perfectly */
 @media (max-width: 600px) {
+  .mktoForm .mktoFormRow {
+    flex-direction: column !important;
+    gap: 0 !important; /* Remove gap since they are stacked vertically */
+  }
   .mktoForm .mktoFormCol {
     width: 100% !important;
-    padding-left: 0 !important;
+    flex: none !important;
   }
 }
