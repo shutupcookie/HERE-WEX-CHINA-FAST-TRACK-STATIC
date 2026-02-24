@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HERE Technologies</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* Standalone specific styles */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4; /* Light gray background */
+            margin: 0;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Contact Our Team</h2>
+        <form id="mktoForm_1234"></form> 
+    </div>
 
+    <script src="//app-sjqe.marketo.com/js/forms2/js/forms2.min.js"></script>
+    <script>
+        // loadForm parameters: Marketo Base URL, Munchkin ID, Form ID
+        MktoForms2.loadForm("//app-sjqe.marketo.com", "123-ABC-456", 1234);
+    </script>
+</body>
+</html>
