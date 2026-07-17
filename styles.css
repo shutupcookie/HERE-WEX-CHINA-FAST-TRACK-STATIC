@@ -1198,6 +1198,174 @@ img {
 }
 
 /* =========================================
+   11. VIDEO CARD SECTION STYLES
+   (contained media + copy layout, modeled on
+   here.com/scenextract-demo-landing-page — NOT full-bleed)
+   ========================================= */
+.video-card-section {
+  width: 100vw;
+  background: #e9f4f9;
+  padding: 80px 0;
+}
+.video-card-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.video-card-title {
+  font-family: "FiraGO", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 1.15;
+  color: #002736;
+  max-width: 780px;
+  margin: 0 0 48px 0;
+  letter-spacing: 0.01em;
+}
+.video-card-row {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+.video-card-media {
+  position: relative;
+  flex: 0 0 50%;
+  max-width: 560px;
+  /* 16:9 matches the source video natively — the clip has on-screen
+     Chinese/English text overlays, so we avoid cropping to 4:3 which
+     would risk cutting off copy at the left/right edges. */
+  aspect-ratio: 16 / 9;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0d1f2d;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 39, 54, 0.12);
+}
+.video-card-media video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-card-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #002736;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+  /* Directly clickable (main.js attaches its own toggle handler here) —
+     NOT pointer-events:none passthrough. After the video has native
+     controls attached, clicks in this region can otherwise get
+     absorbed by the browser's own control layer instead of reaching a
+     delegated listener on the wrapper div, which made the icon work
+     once but fail to restart playback on subsequent clicks. */
+  cursor: pointer;
+  z-index: 2;
+}
+.video-card-play svg {
+  margin-left: 3px;
+}
+.video-card-media:hover .video-card-play {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: #fff;
+}
+.video-card-media.is-playing .video-card-play {
+  opacity: 0;
+  /* Once hidden, let clicks pass through to the video's own native
+     controls (bottom bar) instead of intercepting them. */
+  pointer-events: none;
+}
+.video-card-text {
+  flex: 1 1 0;
+  min-width: 280px;
+}
+.video-card-desc {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #002736e8;
+  opacity: 0.85;
+  max-width: 460px;
+  margin-bottom: 2.2rem;
+}
+.video-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.video-card-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #173142;
+  color: #fff;
+  font-family: "FiraGO", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 28px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.1s;
+}
+.video-card-btn-primary:hover {
+  background: #0d1f2d;
+  transform: translateY(-1px);
+}
+/* Play/pause icon swap — the button reflects actual <video> playback
+   state (kept in sync by main.js listening to the video's own play/
+   pause events), so it works as a real toggle either way. */
+.video-card-btn-primary .icon-pause {
+  display: none;
+}
+.video-card-btn-primary.is-playing .icon-play {
+  display: none;
+}
+.video-card-btn-primary.is-playing .icon-pause {
+  display: inline-block;
+}
+/* Graceful fallback: if the mp4 source 404s (e.g. placeholder not yet
+   replaced), hide the <video>/play control and keep the poster frame
+   as a plain background image instead. */
+.video-card-media.video-fallback video,
+.video-card-media.video-fallback .video-card-play {
+  display: none;
+}
+@media (max-width: 900px) {
+  .video-card-section {
+    padding: 56px 0;
+  }
+  .video-card-title {
+    font-size: 1.6rem;
+    margin-bottom: 32px;
+  }
+  .video-card-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .video-card-media {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+  .video-card-desc {
+    font-size: 1.02rem;
+    max-width: 100%;
+  }
+}
+
+/* =========================================
    OFFICIAL HERE BRAND FORM STYLING
    ========================================= */
 .mktoForm {
