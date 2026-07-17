@@ -1,19 +1,14 @@
-<!-- @format -->
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>HERE Digital Cockpit China</title>
-    <meta
-      name="description"
-      content="HERE Technologies 中国 - 为汽车制造商和企业提供统一的实时地图解决方案与位置数据服务。"
-    />
+    <meta name="description" content="HERE Technologies 中国 - 为汽车制造商和企业提供统一的实时地图解决方案与位置数据服务。">
 
-    <link rel="icon" type="image/svg+xml" href="/src/logo.svg" />
+<link rel="icon" type="image/svg+xml" href="/src/logo.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="preload" as="image" href="src/digital-cockpit-hero-2.jpg" />
+    <link rel="preload" as="image" href="src/digital-cockpit-hero-2.jpg">
   </head>
   <body>
     <header class="navbar">
@@ -22,11 +17,7 @@
           <img src="src/logo.svg" alt="HERE Logo" />
         </a>
 
-        <button
-          class="navbar-toggle"
-          id="navbarToggle"
-          aria-label="Toggle Navigation"
-        >
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle Navigation">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -47,111 +38,30 @@
 
     <section
       class="hero-section dc-hero"
-      style="background-image: url(&quot;src/digital-cockpit-hero-2.jpg&quot;)"
+      style="background-image: url('src/digital-cockpit-hero-2.jpg')"
     >
       <div class="hero-overlay">
         <div class="container hero-content">
           <h1 class="hero-title">面向汽车制造商和企业的统一地图</h1>
-          <a href="contact/" class="btn btn-primary hero-cta" id="contact-btn"
-            >联系我们</a
-          >
+          <a href="contact/" class="btn btn-primary hero-cta" id="contact-btn">联系我们</a>
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         VIDEO SECTION 1
-         Layout modeled on here.com/scenextract-demo-landing-page:
-         contained media box + copy/CTAs side-by-side, NOT full-bleed.
-         - Real asset in place: src/videos/feature-video-1.mp4
-           (compressed from the original 339MB/HEVC 1080p source to
-           ~15MB H.264 960x540 — HEVC has patchy support in Android/
-           WeChat in-app browsers common for a Baidu campaign audience,
-           so re-encoding to H.264 was necessary, not just a size cut).
-         - poster="src/scenextract-poster.jpg" is the client-supplied
-           thumbnail (map data → mesh → rendered scene, 3-panel), center-
-           cropped from its native 3:2 to the box's 16:9 (only trims the
-           decorative teal border top/bottom, no content lost).
-         - Media box aspect-ratio is 16:9 (native), not cropped 4:3 —
-           the source has on-screen Chinese/English text overlays, so
-           cropping to 4:3 risked cutting off copy at the edges.
-         - If the mp4 fails to load, main.js keeps the poster visible
-           and hides the play control so nothing looks broken.
-         - Headline, body copy, and "立即观看" button are client-approved
-           (CN copy provided). Single CTA only — secondary link removed.
-         ============================================================ -->
-    <section class="video-card-section" id="video-section-1">
-      <div class="container video-card-inner">
-        <h2 class="video-card-title">SceneXtract：开启仿真与测试的新可能</h2>
-
-        <div class="video-card-row">
-          <div
-            class="video-card-media"
-            id="videoCardMedia1"
-            tabindex="0"
-            role="button"
-            aria-label="播放视频"
-          >
-            <video
-              id="video1"
-              muted
-              playsinline
-              preload="metadata"
-              poster="src/scenextract-poster.jpg"
-            >
-              <source src="src/videos/feature-video-1.mp4" type="video/mp4" />
-            </video>
-            <span class="video-card-play" aria-hidden="true">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </span>
-          </div>
-
-          <div class="video-card-text">
-            <p class="video-card-desc"
-              >了解HERE如何实现汽车级质量的快速仿真。SceneXtract将AWS生成式AI搜索能力与HERE高精度实时地图相结合，帮助OEM和Tier1供应商在几分钟内生成测试场景。</p
-            >
-            <div class="video-card-actions">
-              <button
-                type="button"
-                class="video-card-btn-primary"
-                data-video-play="videoCardMedia1"
-              >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-                立即观看
-              </button>
-            </div>
-          </div>
-        </div>
+    <section class="feature-section">
+      <div class="feature-content">
+        <h2 class="text-headline font-bold mb-6">一张地图，多种解决方案</h2>
+        <p class="text-body opacity-80">
+          HERE 统一实时地图为跨行业及多种应用场景的企业提供车规级位置数据。
+        </p>
       </div>
     </section>
 
     <section class="contact-global-section">
       <div class="contact-global-content">
         <h2 class="contact-global-title">联系我们</h2>
-        <p class="contact-global-subheading"
-          >一起探讨如何将位置智能融入您的解决方案。</p
-        >
-        <a
-          href="contact/"
-          id="footer-contact-btn"
-          class="contact-global-btn"
-          style="display: inline-block; text-decoration: none"
-          >联系我们</a
-        >
+        <p class="contact-global-subheading">一起探讨如何将位置智能融入您的解决方案。</p>
+        <a href="contact/" id="footer-contact-btn" class="contact-global-btn" style="display: inline-block; text-decoration: none;">联系我们</a>
       </div>
     </section>
 
@@ -172,11 +82,9 @@
     </footer>
 
     <footer class="footer">
-      &copy; 2025 HERE Technologies. 保留所有权利。
-      <span style="margin: 0 10px">|</span>
-      <a href="privacy/" style="color: inherit; text-decoration: none"
-        >隐私政策</a
-      >
+      &copy; 2025 HERE Technologies. 保留所有权利。 
+      <span style="margin: 0 10px;">|</span> 
+      <a href="privacy/" style="color: inherit; text-decoration: none;">隐私政策</a>
     </footer>
 
     <script src="main.js"></script>
