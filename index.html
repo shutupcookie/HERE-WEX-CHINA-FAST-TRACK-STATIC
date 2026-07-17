@@ -112,6 +112,118 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         VIDEO SECTION 2 — HERE AI Assistant
+         Same video-card-section pattern as Section 1, mirrored:
+         video-card-row-reverse flips it to video-right/text-left,
+         creating a zig-zag rhythm down the page.
+         - Video hosted on the same Vercel Blob store as Section 1
+           (self-hosting large mp4s in this repo is not viable — see
+           Section 1's comment for the full 503/hang explanation).
+           Blob URL: https://jqe1t5yr6shzmvgb.public.blob.vercel-storage.com/ai-assistant.mp4
+           (640x360 H.264, ~5MB — re-encoded from a 449MB/HEVC 1080p,
+           6m42s source. Compressed harder than Section 1's video
+           since it's ~2x longer and still needed to fit a similarly
+           small file size; on-screen map/UI text is a bit softer as
+           a result but stays legible at this box size).
+         - poster="src/here-ai-assistant-poster.jpg" is the client-
+           supplied thumbnail, center-cropped from native 4:3 to the
+           box's 16:9 (trims top/bottom margin only, no content lost).
+         - TITLE/SUBHEADING ARE AN UNVERIFIED DRAFT TRANSLATION —
+           colleague hasn't sent approved CN copy for this video yet.
+           Length-matched to Section 1's copy for visual consistency;
+           swap for approved copy as soon as it's available.
+         - Single CTA only, matching Section 1 (no secondary link).
+         ============================================================ -->
+    <section class="video-card-section" id="video-section-2">
+      <div class="container video-card-inner">
+        <h2 class="video-card-title">HERE AI Assistant：您的智能出行助手</h2>
+
+        <div class="video-card-row video-card-row-reverse">
+          <div class="video-card-media" id="videoCardMedia2" tabindex="0" role="button" aria-label="播放视频">
+            <video
+              id="video2"
+              muted
+              playsinline
+              preload="metadata"
+              poster="src/here-ai-assistant-poster.jpg"
+            >
+              <source src="https://jqe1t5yr6shzmvgb.public.blob.vercel-storage.com/ai-assistant.mp4" type="video/mp4" />
+            </video>
+            <span class="video-card-play" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </div>
+
+          <div class="video-card-text">
+            <!-- PLACEHOLDER COPY — draft translation, unverified, swap for colleague-approved CN copy -->
+            <p class="video-card-desc">借助车道级地图属性（如车道数），HERE AI 助手可为您提供更安全的超车建议，并基于丰富地图数据主动推荐精准路线，全面提升驾驶体验。</p>
+            <div class="video-card-actions">
+              <button type="button" class="video-card-btn-primary" data-video-play="videoCardMedia2" aria-label="立即观看">
+                <svg class="icon-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="icon-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+                <span class="btn-label">立即观看</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         WHITEPAPER CTA SECTION
+         Full-width, dark background — deliberately breaks from the
+         video-card pattern of Sections 1 & 2 (per user's call, since
+         two identical light-card sections plus this would feel
+         repetitive; the dark band also visually separates this from
+         the closing cyan "Contact us" band right after it).
+         - Ungated: the CTA is a plain <a download> pointing straight
+           at the PDF — clicking it starts the download immediately,
+           no email/lead form. (A rough gated-form screenshot from
+           here.com was shared only as loose visual inspiration for
+           this kind of section — not replicated here on purpose.)
+         - src/here-whitepaper-connected-navigation.pdf is the actual
+           whitepaper (ABI Research x HERE, ~1.5MB) — small enough
+           that normal static hosting is fine, unlike the mp4s (this
+           isn't a streamed range-request asset, so none of the
+           Vercel Blob/503 issues from the video sections apply).
+         - No separate thumbnail file existed in Downloads, so
+           src/whitepaper-poster.jpg is the whitepaper's own cover
+           page, cropped from the PDF's first page (native page ratio
+           → cropped to 16:9). It's the real cover art (ABI Research/
+           HERE co-brand, title, author) so it reads as an authentic
+           document preview rather than a generic stock image.
+         - TITLE/SUBHEADING ARE AN UNVERIFIED DRAFT TRANSLATION,
+           same as Section 2 — swap for colleague-approved CN copy
+           once available. Description length is matched to Sections
+           1 & 2's body copy for visual consistency; the two EN bullet
+           points were condensed into one flowing sentence rather than
+           kept as a list, to match that same paragraph style.
+         ============================================================ -->
+    <section class="whitepaper-cta-section" id="whitepaper-section">
+      <div class="container whitepaper-cta-inner">
+        <div class="whitepaper-cta-media">
+          <img src="src/whitepaper-poster.jpg" alt="白皮书：探索互联导航的未来趋势" />
+        </div>
+        <div class="whitepaper-cta-text">
+          <!-- PLACEHOLDER COPY — draft translation, unverified, swap for colleague-approved CN copy -->
+          <h2 class="whitepaper-cta-title">白皮书：探索互联导航的未来趋势</h2>
+          <p class="whitepaper-cta-desc">本白皮书由ABI Research撰写，深入探讨HERE Navigation如何助力汽车制造商打造以数字座舱为核心的卓越互联导航体验，并推动电动汽车的可持续普及。</p>
+          <div class="whitepaper-cta-actions">
+            <a
+              href="src/here-whitepaper-connected-navigation.pdf"
+              download="HERE-ABI-白皮书-互联导航的未来.pdf"
+              target="_blank"
+              rel="noopener"
+              class="whitepaper-cta-btn"
+            >
+              立即下载
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="contact-global-section">
       <div class="contact-global-content">
         <h2 class="contact-global-title">联系我们</h2>
